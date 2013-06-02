@@ -6,6 +6,7 @@ gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
 gem 'activerecord'
 gem 'turbolinks'
+gem 'railties'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
