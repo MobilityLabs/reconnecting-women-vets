@@ -6,7 +6,7 @@ gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
 gem 'activerecord'
 gem 'turbolinks'
-gem 'railties','4.0.0.rc1'
+# gem 'railties','4.0.0.rc1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,22 +14,22 @@ gem 'railties','4.0.0.rc1'
 gem 'pg'
 
 ## Front End
-gem 'jquery-rails', '~>3.0.0'
+# gem 'jquery-rails', '~>3.0.0'
 gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-sass-rails'
 gem "font-awesome-rails"
 
 ## Pagination
-gem 'will_paginate'
+# gem 'will_paginate'
 
 ## Authentication
-gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
-gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
+# gem 'bcrypt-ruby', '~> 3.0.0'
 
 ## File Uploads
-gem 'paperclip'
-gem 'aws-sdk'
+# gem 'paperclip'
+# gem 'aws-sdk'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
