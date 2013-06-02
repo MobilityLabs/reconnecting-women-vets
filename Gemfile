@@ -6,7 +6,7 @@ gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
 gem 'activerecord'
 gem 'turbolinks'
-# gem 'railties','4.0.0.rc1'
+gem 'dalli'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,11 +14,14 @@ gem 'turbolinks'
 gem 'pg'
 
 ## Front End
-# gem 'jquery-rails', '~>3.0.0'
-gem 'haml'
-gem 'haml-rails'
-gem 'bootstrap-sass-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '2.0.2'
+gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem 'jquery-datatables-rails'
+gem 'ajax-datatables-rails'
+gem 'momentjs-rails'
+gem 'haml' #temporary for developing the confirmation screen
 
 ## Pagination
 # gem 'will_paginate'
@@ -49,3 +52,4 @@ gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
 gem 'coffee-rails'
 gem 'therubyracer'
 gem 'uglifier', '>= 1.0.3'
+gem 'closure-compiler'
