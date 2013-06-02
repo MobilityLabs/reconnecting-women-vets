@@ -9,5 +9,4 @@
     = f.label :connected_resource
     = f.select :connected_resource, options_for_select(@resources)
   .span3  
-    = f.check_box :_destroy
-    = f.label :_destroy, 'Remove Action'
+    = link_to_remove_fields "remove", f

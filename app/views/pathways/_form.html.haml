@@ -13,6 +13,7 @@
         = f.text_field :name
       .row-fluid
         .span12
+          = link_to_add_fields "Add Question", f, :questions
           = f.fields_for :questions do |builder|
             = render "question_fields", f: builder
       .actions

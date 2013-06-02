@@ -1,3 +1,4 @@
+= link_to_remove_fields "remove", f
 .question.row-fluid
   .span10.offset1
     .row-fluid
@@ -18,3 +19,4 @@
             Actions
             = f.fields_for :actions do |builder|
               = render 'action_fields', f: builder
+= link_to_add_fields "Add Actions", f, :answers
