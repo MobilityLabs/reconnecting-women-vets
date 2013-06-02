@@ -6,7 +6,7 @@ gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
 gem 'activerecord'
 gem 'turbolinks'
-gem 'railties'
+gem 'railties','4.0.0.rc1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,7 +14,7 @@ gem 'railties'
 gem 'pg'
 
 ## Front End
-gem 'jquery-rails'
+gem 'jquery-rails', '~>3.0.0'
 gem 'haml'
 gem 'haml-rails'
 gem 'bootstrap-sass-rails'
@@ -45,9 +45,7 @@ gem 'aws-sdk'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
-  gem 'coffee-rails'
-  gem 'therubyracer'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
+gem 'coffee-rails'
+gem 'therubyracer'
+gem 'uglifier', '>= 1.0.3'
