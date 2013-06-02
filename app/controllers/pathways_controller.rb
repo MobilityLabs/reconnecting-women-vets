@@ -42,7 +42,6 @@ class PathwaysController < ApplicationController
   # POST /pathways.json
   def create
     @pathway = Pathway.new(pathway_params)
-
     respond_to do |format|
       if @pathway.save
         format.html { redirect_to @pathway, notice: 'Pathway was successfully created.' }
@@ -60,7 +59,7 @@ class PathwaysController < ApplicationController
     @pathway = Pathway.find(params[:id])
 
     respond_to do |format|
-      if @pathway.update_attributes(params[:pathway])
+      if @pathway.update_attributes(pathway_params)
         format.html { redirect_to @pathway, notice: 'Pathway was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,6 +84,6 @@ class PathwaysController < ApplicationController
   private
     def pathway_params
       params.require(:pathway).permit(:name, questions_attributes: [:text, :pathway_id, :order, :_destroy,
-                                      actions_attributes: [:text, :question_id, :resource_id, :pathway_id, :_destroy, :goto_pathway, :connected_resource]])
+                                      actions_attributes: [:text, :question_id, :resource_id, :pathway_id, :_destroy]])
     end
 end

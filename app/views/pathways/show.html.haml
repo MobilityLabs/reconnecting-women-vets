@@ -1,9 +1,30 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @pathway.name
+%h1
+  Name: #{@pathway.name}
+- @pathway.questions.each do |question|
+  .row-fluid
+    .span12
+      .row-fluid
+        %label Question Text
+        = question.text
+      .row-fluid
+        .span12
+          %h3 Actions
+          - question.actions.each do |action|
+            .row-fluid
+              .span4
+                %p
+                  Action Text: 
+                  = action.text
+              .span4
+                %p
+                  Go To Pathway: 
+                  = action.goto_pathway.name unless action.goto_pathway.blank?
+              .span4
+                %p
+                  Connected Resource: 
+                  = action.connected_resource.name unless action.connected_resource.blank?
 
 = link_to 'Edit', edit_pathway_path(@pathway)
-\|
 = link_to 'Back', pathways_path
