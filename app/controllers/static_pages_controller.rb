@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
-  def Landing
+  def home
   end
 
-  def Question
+  def final
   end
 
-  def End_of_Pathway
+  def question
   end
 end

@@ -1,7 +1,8 @@
 Reconnecting::Application.routes.draw do
-  get "static_pages/Landing"
-  get "static_pages/Question"
-  get "static_pages/End_of_Pathway"
+  match "home", to: 'static_pages#home', via: 'get'
+  match "question", to: 'static_pages#question', via: 'get'
+  match "final", to: 'static_pages#final', via: 'get'
+
   resources :resource_categories
 
 

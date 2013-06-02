@@ -6,4 +6,34 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = yield
+    #wrap
+      #main
+        .container
+          .masthead
+            %h3.muted Helping woman who have served
+            .navbar
+              .navbar-inner
+                .container
+                  %ul.nav
+                    %li.active
+                      %a{href: '#'} Home
+                    %li
+                      %a{href: '#'} Education & Employment
+                    %li
+                      %a{href: '#'} Childcare
+                    %li
+                      %a{href: '#'} Logistics
+                    %li
+                      %a{href: '#'} Community
+                    %li
+                      %a{href: '#'} Mental Health
+                    %li
+                      %a{href: '#'} Financial
+          .row-fluid
+            .span12
+              = yield
+        #push
+    #footer
+      .inner.centered
+        %p
+          Reconnecting Women Veterans 2013

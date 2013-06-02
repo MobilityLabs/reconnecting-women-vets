@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var steps = ['one','two','three', 'four', 'five'];
+
+$(function(){
+  $('.' + steps[0]).show();
+  $.each(steps, function(index, step){
+    $('.' + step).children('button').click(function(e){
+      $('.question').hide();
+      $('.like-you').hide();
+      $('.' + steps[index + 1]).show();
+    });
+  });
+});
