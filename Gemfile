@@ -47,6 +47,7 @@ gem 'aws-sdk'
 # in production environments by default.
 group :assets do
   gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier'
+  gem 'coffee-rails'
+  gem 'therubyracer'
+  gem 'uglifier', '>= 1.0.3'
 end

@@ -111,7 +111,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.4)
-    multi_json (1.7.4)
+    multi_json (1.7.5)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
     paperclip (3.4.2)
@@ -166,6 +166,7 @@ DEPENDENCIES
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass-rails
+  coffee-rails
   devise!
   font-awesome-rails
   haml
@@ -179,5 +180,5 @@ DEPENDENCIES
   sass-rails!
   therubyracer
   turbolinks
-  uglifier
+  uglifier (>= 1.0.3)
   will_paginate
