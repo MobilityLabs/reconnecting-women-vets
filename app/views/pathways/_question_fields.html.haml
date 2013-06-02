@@ -1,6 +1,7 @@
-= link_to_remove_fields "remove", f
 .question.row-fluid
-  .span10.offset1
+  .span1
+    = link_to_remove_fields "remove", f
+  .span10
     .row-fluid
       %fieldset
         %legend
@@ -9,9 +10,6 @@
           = f.label :order do
             Order of Question
             = f.number_field :order
-          = f.label :_destroy, :class => 'checkbox' do
-            Delete Question
-            = f.check_box :_destroy, :class => 'checkbox'
     .actions.row-fluid
       .span12
         %fieldset
@@ -19,4 +17,4 @@
             Actions
             = f.fields_for :actions do |builder|
               = render 'action_fields', f: builder
-= link_to_add_fields "Add Actions", f, :answers
+            = link_to_add_fields "Add Actions", f, :actions
