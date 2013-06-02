@@ -171,11 +171,11 @@ DEPENDENCIES
   font-awesome-rails
   haml
   haml-rails
-  jquery-rails
+  jquery-rails (~> 3.0.0)
   paperclip
   pg
   rails (~> 4.0.0.rc1)!
-  railties
+  railties (= 4.0.0.rc1)
   rake
   sass-rails!
   therubyracer
