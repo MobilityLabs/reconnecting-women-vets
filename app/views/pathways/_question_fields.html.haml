@@ -1,0 +1,20 @@
+.question.row-fluid
+  .span10.offset1
+    .row-fluid
+      %fieldset
+        %legend
+          %h3 Question
+          = f.text_area :text, {rows: 2, placeholder: 'Type the question'}
+          = f.label :order do
+            Order of Question
+            = f.number_field :order
+          = f.label :_destroy, :class => 'checkbox' do
+            Delete Question
+            = f.check_box :_destroy, :class => 'checkbox'
+    .actions.row-fluid
+      .span12
+        %fieldset
+          %legend
+            Actions
+            = f.fields_for :actions do |builder|
+              = render 'action_fields', f: builder

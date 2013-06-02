@@ -1,0 +1,15 @@
+%h1 Listing resources
+
+.row-fluid
+  .span10.offset1
+    - @resources.each do |resource|
+      .row-fluid
+        .span2= resource.name
+        .span3= resource.link
+        .span1= resource.starting_weight
+        .span2= resource.category.name unless resource.category == nil
+        .span3
+          = link_to 'Edit', edit_resource_path(resource)
+          = link_to 'Destroy', resource, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    = link_to 'New Resource', new_resource_path

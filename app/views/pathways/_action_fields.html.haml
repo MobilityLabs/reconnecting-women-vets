@@ -1,0 +1,13 @@
+.action.row-fluid
+  .span3
+    = f.label :text, 'Action Text'
+    = f.text_field :text
+  .span3
+    = f.label :goto_pathway, 'Go to Pathway'
+    = f.select :goto_pathway, options_for_select([['This Pathway', @pathway.id]]+@pathways)
+  .span3
+    = f.label :connected_resource
+    = f.select :connected_resource, options_for_select(@resources)
+  .span3  
+    = f.check_box :_destroy
+    = f.label :_destroy, 'Remove Action'

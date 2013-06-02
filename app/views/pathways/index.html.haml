@@ -1,0 +1,19 @@
+%h1 Listing pathways
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @pathways.each do |pathway|
+    %tr
+      %td= pathway.name
+      %td= link_to 'Show', pathway
+      %td= link_to 'Edit', edit_pathway_path(pathway)
+      %td= link_to 'Destroy', pathway, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pathway', new_pathway_path

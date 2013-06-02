@@ -1,0 +1,19 @@
+.row-fluid
+  .span12
+    = form_for @pathway do |f|
+      - if @pathway.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@pathway.errors.count, "error")} prohibited this pathway from being saved:"
+          %ul
+            - @pathway.errors.full_messages.each do |msg|
+              %li= msg
+
+      .field
+        = f.label :name
+        = f.text_field :name
+      .row-fluid
+        .span12
+          = f.fields_for :questions do |builder|
+            = render "question_fields", f: builder
+      .actions
+        = f.submit 'Save'

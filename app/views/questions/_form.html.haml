@@ -1,0 +1,47 @@
+= form_for @question do |f|
+  - if @question.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
+      %ul
+        - @question.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :text
+    = f.text_area :text, size: '400x4', style: 'width: 400px'
+  .field
+    = f.label :pathway
+    = f.select :pathway, options_for_select(@pathways)
+  .field
+    = f.label :first_action
+    = f.select :first_action, options_for_select(@pathways)
+    = f.select :first_resource, options_for_select(@resources)
+    = f.label :first_text
+    = f.text_field :first_text
+  .field
+    = f.label :second_action
+    = f.select :second_action, options_for_select(@pathways)
+    = f.select :second_resource, options_for_select(@resources)
+    = f.label :second_text
+    = f.text_field :second_text
+  .field
+    = f.label :third_action
+    = f.select :third_action, options_for_select(@pathways)
+    = f.select :third_resource, options_for_select(@resources)
+    = f.label :third_text
+    = f.text_field :third_text
+  .field
+    = f.label :fourth_action
+    = f.select :fourth_action, options_for_select(@pathways)
+    = f.select :fourth_resource, options_for_select(@resources)
+    = f.label :fourth_text
+    = f.text_field :fourth_text
+  .field
+    = f.label :fifth_action
+    = f.select :fifth_action, options_for_select(@pathways)
+    = f.select :fifth_resource, options_for_select(@resources)
+    = f.label :fifth_text
+    = f.text_field :fifth_text
+
+  .actions
+    = f.submit 'Save'
