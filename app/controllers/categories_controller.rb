@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @category = Category.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,11 +41,12 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.new(params[:category])
+    @category = Category.new(params[:category].permit(:name))
 
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Resource category was successfully created.' }
+        format.js   {}
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }
@@ -77,6 +79,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to categories_url }
+      format.js   {}
       format.json { head :no_content }
     end
   end

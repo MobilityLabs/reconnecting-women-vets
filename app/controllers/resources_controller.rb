@@ -29,13 +29,12 @@ class ResourcesController < ApplicationController
   # GET /resources/1/edit
   def edit
     @resource = Resource.find(params[:id])
-
   end
 
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new(params[:resource])
+    @resource = Resource.new(resource_params)
 
     respond_to do |format|
       if @resource.save
@@ -75,4 +74,12 @@ class ResourcesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+
+  def resource_params
+    permitted = params[:resource].permit(:name, :link, :starting_weight, :category_id)
+    permitted
+  end
+
 end

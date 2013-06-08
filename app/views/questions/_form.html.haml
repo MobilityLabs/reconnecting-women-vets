@@ -11,8 +11,6 @@
     = f.text_area :text, size: '400x4', style: 'width: 400px'
   .field
     = f.label :pathway
-    = f.select :pathway, options_for_select(@pathways)
-  .field
     = f.label :first_action
     = f.select :first_action, options_for_select(@pathways)
     = f.select :first_resource, options_for_select(@resources)
