@@ -15,10 +15,12 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @category = Category.find(params[:id])
+    @resources = Resource.where(category_id: @category.id)
+    @resource = Resource.new
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @category }
+      format.json { render json: { category: @category, resources: @resources } }
     end
   end
 

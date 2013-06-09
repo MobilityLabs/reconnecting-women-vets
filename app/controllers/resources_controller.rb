@@ -39,6 +39,7 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+        format.js   {}
         format.json { render json: @resource, status: :created, location: @resource }
       else
         format.html { render action: "new" }
@@ -71,6 +72,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to resources_url }
+      format.js   {}
       format.json { head :no_content }
     end
   end

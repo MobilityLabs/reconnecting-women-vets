@@ -1,0 +1,4 @@
+%tr{id: "resource_#{resource.id}"}
+  %td= resource.name
+  %td= resource.link
+  %td= link_to 'Destroy', resource, method: :delete, remote: true, data: { confirm: 'Are you sure?' }

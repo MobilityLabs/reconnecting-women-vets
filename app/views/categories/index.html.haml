@@ -1,17 +1,20 @@
-%h1 Listing categories
+.row-fluid
+  .span12
+    %p#notice= notice
+.row-fluid
+  .span6
+    %h2 Listing categories
 
-%table
-  %tbody#categories
-    %tr
-      %th Name
-      %th(colspan=3) Actions
+    %table
+      %thead
+        %tr
+          %th Name
+          %th(colspan=3) Actions
+      %tbody#categories
+        - @categories.each do |category|
+          = render category
 
-    - @categories.each do |category|
-      = render category
-
-%br
-
-= render 'form'
-
-%br
-= link_to 'New category', new_category_path
+  .span6
+    .hero-unit
+      %h4 Create a new category:
+      = render 'form'
