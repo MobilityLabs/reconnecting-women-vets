@@ -63,7 +63,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     respond_to do |format|
-      if @category.update_attributes(params[:category])
+      if @category.update_attributes(params[:category].permit(:name))
         format.html { redirect_to @category, notice: 'Resource category was successfully updated.' }
         format.json { head :no_content }
       else

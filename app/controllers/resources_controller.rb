@@ -3,6 +3,8 @@ class ResourcesController < ApplicationController
   # GET /resources.json
   def index
     @resources = Resource.all
+    @resource = Resource.new
+    @categories = Category.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @resources }
@@ -12,13 +14,18 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
-    redirect_to action: :index
+    @resource = Resource.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @resource }
+    end
   end
 
   # GET /resources/new
   # GET /resources/new.json
   def new
     @resource = Resource.new
+    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -29,6 +36,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1/edit
   def edit
     @resource = Resource.find(params[:id])
+    @categories = Category.all
   end
 
   # POST /resources
@@ -54,7 +62,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
 
     respond_to do |format|
-      if @resource.update_attributes(params[:resource])
+      if @resource.update_attributes(resource_params)
         format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
         format.json { head :no_content }
       else

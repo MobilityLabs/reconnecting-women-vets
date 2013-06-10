@@ -1,0 +1,26 @@
+.row-fluid
+  .span12
+    %p#notice= notice
+
+.row-fluid
+  .span6
+    %b Name:
+    = @resource.name
+.row-fluid
+  .span6
+    %b Link:
+    = @resource.link
+.row-fluid
+  .span6
+    %b Starting Weight:
+    = @resource.starting_weight
+.row-fluid
+  .span6
+    %b Category:
+    = @resource.category.name
+.row-fluid
+  .span6
+    %div
+      %span= link_to 'Edit', edit_resource_path(@resource)
+      \|
+      %span= link_to 'Back', resources_path

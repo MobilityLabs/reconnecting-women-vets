@@ -1,4 +1,4 @@
-= form_for(@resource, remote: true) do |f|
+= form_for(@resource, remote: remote ||= false) do |f|
   - if @resource.errors.any?
     #error_explanation
       %h2= "#{pluralize(@resource.errors.count, "error")} prohibited this resource from being saved:"
@@ -18,7 +18,9 @@
     - if @category.present?
       = f.hidden_field :category_id, value: @category.id
     - else
+      - selected = ['', nil]
+      - selected = [@resource.category.name, @resource.category.id] if @resource.category_id?
       = f.label :category
-      = f.select :category_id, options_for_select(Category.all.collect{ |rc| [rc.name, rc.id]}), { include_blank: true }, class: "resource_attribute"
+      = f.select :category_id, options_for_select(@categories.collect{ |rc| [rc.name, rc.id]}, selected), { include_blank: true }, class: "resource_attribute"
   .actions
     = f.submit 'Save'

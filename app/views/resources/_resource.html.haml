@@ -1,4 +1,7 @@
 %tr{id: "resource_#{resource.id}"}
   %td= resource.name
   %td= resource.link
-  %td= link_to 'Destroy', resource, method: :delete, remote: true, data: { confirm: 'Are you sure?' }
+  %td= resource.starting_weight
+  %td
+    = link_to 'Edit', edit_resource_path(resource)
+    = link_to 'Destroy', resource, method: :delete, remote: true, data: { confirm: 'Are you sure?' }

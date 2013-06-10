@@ -17,4 +17,4 @@
   .span6
     .hero-unit
       %h4 Create a new category:
-      = render 'form'
+      = render partial: 'form', locals: {remote: true}

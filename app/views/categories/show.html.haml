@@ -16,11 +16,12 @@
 
     %p Resources for this category:
 
-    %table
+    %table(border=true)
       %thead
         %tr
           %th Name
           %th Link
+          %th Starting Weight
           %th Actions
       %tbody{id: "resources"}
         - @resources.each do |resource|
@@ -29,4 +30,4 @@
   .span6
     .hero-unit
       %h4 Create a new resource:
-      = render 'resources/form'
+      = render partial: 'resources/form', locals: {remote: true}
