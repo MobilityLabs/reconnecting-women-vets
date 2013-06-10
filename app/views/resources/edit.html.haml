@@ -1,5 +1,14 @@
-%h1 Editing resource
+.row-fluid
+  .span12
+    %p#notice= notice
 
-= render 'form'
+.row-fluid
+  .span6
+    %h1 Editing resource
 
-= link_to 'Back', resources_path
+.row-fluid
+  .span6
+    = render partial: 'form', locals: {remote: true}
+.row-fluid
+  .span6
+    = link_to 'Back', @resource

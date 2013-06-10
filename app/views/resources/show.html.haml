@@ -4,23 +4,12 @@
 
 .row-fluid
   .span6
-    %b Name:
-    = @resource.name
+    %h1 Resource
+
 .row-fluid
   .span6
-    %b Link:
-    = @resource.link
+    = render partial: 'form', locals: {disabled: true}
+    = link_to 'Edit', edit_resource_path, class: 'btn'
 .row-fluid
   .span6
-    %b Starting Weight:
-    = @resource.starting_weight
-.row-fluid
-  .span6
-    %b Category:
-    = @resource.category.name
-.row-fluid
-  .span6
-    %div
-      %span= link_to 'Edit', edit_resource_path(@resource)
-      \|
-      %span= link_to 'Back', resources_path
+    = link_to 'Back', resources_path

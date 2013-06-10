@@ -1,3 +1,4 @@
+- disabled ||= false
 = form_for(@resource, remote: remote ||= false) do |f|
   - if @resource.errors.any?
     #error_explanation
@@ -7,20 +8,20 @@
           %li= msg
   .field
     = f.label :name
-    = f.text_field :name, class: "resource_attribute"
+    = f.text_field :name, class: "resource_attribute", disabled: disabled
   .field
     = f.label :link
-    = f.text_field :link, class: "resource_attribute"
+    = f.text_field :link, class: "resource_attribute", disabled: disabled
   .field
     = f.label :starting_weight
-    = f.number_field :starting_weight, class: "resource_attribute"
+    = f.number_field :starting_weight, class: "resource_attribute", disabled: disabled
   .field
     - if @category.present?
       = f.hidden_field :category_id, value: @category.id
     - else
       - selected = ['', nil]
-      - selected = [@resource.category.name, @resource.category.id] if @resource.category_id?
+      - selected = [@resource.category.name, @resource.category.id] if @resource.category.present?
       = f.label :category
-      = f.select :category_id, options_for_select(@categories.collect{ |rc| [rc.name, rc.id]}, selected), { include_blank: true }, class: "resource_attribute"
+      = f.select :category_id, options_for_select(@categories.collect{ |rc| [rc.name, rc.id]}, selected), { include_blank: true }, class: "resource_attribute", disabled: disabled
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn' unless disabled

@@ -3,7 +3,7 @@
     %p#notice= notice
 
 .row-fluid
-  .span6
+  .span8
     %h1 Listing resources
     %table(border=true)
       %thead
@@ -11,11 +11,12 @@
           %th Name
           %th Link
           %th Starting Weight
+          %th Category
           %th Actions
       %tbody{id: "resources"}
         - @resources.each do |resource|
           = render resource
-  .span6
+  .span4
     .hero-unit
       %h4 Create a new resource:
       = render partial: 'form', locals: {remote: true}
