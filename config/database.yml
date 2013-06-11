@@ -1,26 +1,35 @@
 development:
-  adapter: postgresql
-  database: reconnecting_dev
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: reconnecting_development
+  host:     198.199.87.215
+  port:     3306
+  pool: 5
   username: test
   password: test
-  host: localhost
-  schema_search_path: public
+  socket: /var/run/mysqld/mysqld.sock
 
 # # Warning: The database defined as "test" will be erased and
 # # re-generated from your development database when you run "rake".
 # # Do not set this db to the same as development or production.
 test:
-  adapter: postgresql
-  database: reconnecting_test
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: reconnecting_testing
+  pool: 5
   username: test
   password: test
-  host: localhost
-  schema_search_path: public
+  socket: /var/run/mysqld/mysqld.sock
+
 
 production:
-  adapter: postgresql
-  database: reconnecting_prod
-  username: test
-  password: test
-  host: localhost
-  schema_search_path: public
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: reconnecting_production
+  pool: 5
+  username: reconnecting
+  password: f6J9sbYK4BmTDmV
+  host: reconnecting-production.cuxx0vtbyol5.us-east-1.rds.amazonaws.com

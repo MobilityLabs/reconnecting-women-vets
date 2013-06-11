@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'sass-rails', '~>4.0.0.rc1'
 gem 'coffee-rails', '~>4.0.0.rc1'
 
-gem 'pg'
+gem 'mysql2'
 
 ## Front End
 gem 'jquery-rails'
