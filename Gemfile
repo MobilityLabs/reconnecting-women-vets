@@ -5,7 +5,6 @@ ruby '2.0.0'
 gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
 gem 'turbolinks'
-gem 'dalli'
 
 gem 'sass-rails', '~>4.0.0.rc1'
 gem 'coffee-rails', '~>4.0.0.rc1'
@@ -14,11 +13,8 @@ gem 'pg'
 
 ## Front End
 gem 'jquery-rails'
-gem 'jquery-ui-rails', '2.0.2'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
-gem 'jquery-datatables-rails'
-gem 'ajax-datatables-rails'
 gem 'momentjs-rails'
 gem 'haml' #temporary for developing the confirmation screen
 
