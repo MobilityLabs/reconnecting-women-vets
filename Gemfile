@@ -4,12 +4,11 @@ ruby '2.0.0'
 
 gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
-gem 'activerecord'
 gem 'turbolinks'
 gem 'dalli'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'sass-rails', '~>4.0.0.rc1'
+gem 'coffee-rails', '~>4.0.0.rc1'
 
 gem 'pg'
 
@@ -48,8 +47,6 @@ gem 'haml' #temporary for developing the confirmation screen
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
-gem 'coffee-rails'
 gem 'therubyracer'
 gem 'uglifier', '>= 1.0.3'
 gem 'closure-compiler'
