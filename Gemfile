@@ -18,7 +18,6 @@ gem "font-awesome-rails"
 gem 'momentjs-rails'
 gem 'haml' #temporary for developing the confirmation screen
 
-gem 'therubyracer'
 gem 'uglifier', '>= 1.0.3'
 ## Pagination
 # gem 'will_paginate'
