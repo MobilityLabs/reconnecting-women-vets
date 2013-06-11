@@ -1,3 +1,6 @@
-$('<%= escape_javascript(render @category) %>').appendTo('#categories');
+$('#categories').append('<%= escape_javascript(render @category) %>');
+$('.category').detach().sort(function(a,b) {
+  return $(a).find('td').first().text() > $(b).find('td').first().text() 
+}).appendTo('#categories');
 $('#notice').text('Resource category was successfully created.')
 $('#category_name').val('');

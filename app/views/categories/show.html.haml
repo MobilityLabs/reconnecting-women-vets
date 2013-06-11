@@ -3,7 +3,7 @@
     %p#notice= notice
 
 .row-fluid
-  .span6
+  .span12
     %b Category Name:
     = @category.name
 
@@ -23,11 +23,7 @@
           %th Link
           %th Starting Weight
           %th Actions
-      %tbody{id: "resources"}
+      %tbody.category{id: "resources"}
+        = render partial: 'resources/new'
         - @resources.each do |resource|
           = render resource
-
-  .span6
-    .hero-unit
-      %h4 Create a new resource:
-      = render partial: 'resources/form', locals: {remote: true}

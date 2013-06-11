@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.order(:name).all
     @category = Category.new
 
     respond_to do |format|
@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @category = Category.find(params[:id])
-    @resources = Resource.where(category_id: @category.id)
+    @resources = Resource.where(category_id: @category.id).order(:name).all
     @resource = Resource.new
 
     respond_to do |format|

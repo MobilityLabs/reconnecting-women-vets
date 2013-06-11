@@ -1,0 +1,4 @@
+= form_for(@category, remote: true) do |f|
+  %tr
+    %td= f.text_field :name
+    %td= f.submit 'Save'

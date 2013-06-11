@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @resources = Resource.order(:name).all
     @resource = Resource.new
     @categories = Category.all
     respond_to do |format|
