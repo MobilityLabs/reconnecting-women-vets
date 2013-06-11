@@ -18,6 +18,8 @@ gem "font-awesome-rails"
 gem 'momentjs-rails'
 gem 'haml' #temporary for developing the confirmation screen
 
+gem 'therubyracer'
+gem 'uglifier', '>= 1.0.3'
 ## Pagination
 # gem 'will_paginate'
 
@@ -43,6 +45,3 @@ gem 'haml' #temporary for developing the confirmation screen
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'therubyracer'
-gem 'uglifier', '>= 1.0.3'
-gem 'closure-compiler'
