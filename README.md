@@ -9,7 +9,7 @@ reconnecting-women-vets
 * Login and run `sudo apt-get update && sudo apt-get dist-upgrade`
 * Install dependencies we will need later like:
     * git for use with capistrano `sudo apt-get install git`
-    * mysql for RDS `sudo apt-get install mysql-client`
+    * mysql for RDS `sudo apt-get install mysql-client libmysqlclient-dev`
     * Curl if needed `sudo apt-get install curl libcurl3 libcurl3-dev`
     * Install nodejs `sudo apt-get install nodejs`
     * Install RVM `\curl -L https://get.rvm.io | bash -s stable --rails`
@@ -30,4 +30,6 @@ reconnecting-women-vets
 * `cap deploy:setup`
     * You may have file permission problems after running this, if you do `sudo chown ubuntu:ubuntu <the folder>`
 * `cap deploy:check`
+* `ssh git@github.com` to add host key
 * `cap deploy`
+* If you get an error then ssh into server and do bundle install
