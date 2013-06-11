@@ -65,9 +65,11 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update_attributes(params[:category].permit(:name))
         format.html { redirect_to @category, notice: 'Resource category was successfully updated.' }
+        format.js   {}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js   {}
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
