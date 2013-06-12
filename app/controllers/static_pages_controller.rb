@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def demonstration
   end
+
+  def strategy
+  end
 end
