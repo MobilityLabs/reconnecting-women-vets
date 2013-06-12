@@ -1,6 +1,6 @@
 Reconnecting::Application.routes.draw do
-  match "home", to: 'static_pages#home', via: 'get'
-  match "final", to: 'static_pages#final', via: 'get'
+  match "/", to: 'static_pages#home', via: 'get'
+  match "demonstration", to: 'static_pages#demonstration', via: 'get'
 
   resources :categories
 
@@ -9,7 +9,6 @@ Reconnecting::Application.routes.draw do
 
 
   resources :questions
-  match "question", to: 'static_pages#question', via: 'get'
 
 
   resources :pathways

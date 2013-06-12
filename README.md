@@ -23,6 +23,12 @@ reconnecting-women-vets
 ## Setup Passenger and ngynx
 * If using ruby2.0.0-p0 use `rvmsudo gem install passenger --pre`
 * Install nginx with passenger support `rvmsudo passenger-install-nginx-module`
+* Download init script and throw it in init.d
+  * `wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh`
+  * `sudo mv init-deb.sh /etc/init.d/nginx`
+  * `sudo chmod +x /etc/init.d/nginx`
+  * `sudo /usr/sbin/update-rc.d -f nginx defaults`
+
 ## Deploy using capistrano
 * Create capfile and deploy.rb
     * Main Points to remember:

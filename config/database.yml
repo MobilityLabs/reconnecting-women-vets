@@ -1,14 +1,13 @@
-development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: reconnecting_development
-  host:     198.199.87.215
-  port:     3306
-  pool: 5
-  username: test
-  password: test
-  socket: /var/run/mysqld/mysqld.sock
+
+development: # Currently only accessible from the lab
+  adapter:      mysql2
+  encoding:     utf8
+  reconnect:    false
+  database:     reconnecting_development
+  pool:         5
+  username:     reconnecting
+  password:     B!!B9hUgkzJCSKb2
+  host:         reconnecting-development.cuxx0vtbyol5.us-east-1.rds.amazonaws.com
 
 # # Warning: The database defined as "test" will be erased and
 # # re-generated from your development database when you run "rake".
