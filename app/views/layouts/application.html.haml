@@ -21,8 +21,8 @@
                       %a{href: '/demonstration'} Demonstration
                     %li
                       %a{href: '#'} Strategy
-                    %li
-                      %a{href: '#'} Contact Us
+                    %li{class:"#{'active' if controller == 'static_pages' && action == 'demonstration'}"}
+                      %a{href: '/contact-us'} Contact Us
           .row-fluid
             .span12
               = yield

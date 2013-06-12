@@ -36,7 +36,7 @@ reconnecting-women-vets
 * `cap deploy:setup`
     * You may have file permission problems after running this, if you do `sudo chown ubuntu:ubuntu <the folder>`
 * `cap deploy:check`
-* `ssh git@github.com` to add host key
+* From production server `ssh git@github.com` to add host key
 * `cap deploy`
 * If you get an error then ssh into server and do bundle install
 * Ensure you are using the same ruby version locally as the server
