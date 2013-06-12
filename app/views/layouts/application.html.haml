@@ -15,20 +15,14 @@
               .navbar-inner
                 .container
                   %ul.nav
-                    %li.active
-                      %a{href: '#'} Home
+                    %li{class:"#{'active' if controller == 'static_pages' && action == 'home'}"}
+                      %a{href: '/'} Home
+                    %li{class:"#{'active' if controller == 'static_pages' && action == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
+                      %a{href: '/demonstration'} Demonstration
                     %li
-                      %a{href: '#'} Education & Employment
+                      %a{href: '#'} Strategy
                     %li
-                      %a{href: '#'} Childcare
-                    %li
-                      %a{href: '#'} Logistics
-                    %li
-                      %a{href: '#'} Community
-                    %li
-                      %a{href: '#'} Mental Health
-                    %li
-                      %a{href: '#'} Financial
+                      %a{href: '#'} Contact Us
           .row-fluid
             .span12
               = yield

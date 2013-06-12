@@ -4,25 +4,22 @@ ruby '2.0.0'
 
 gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
-gem 'activerecord'
 gem 'turbolinks'
-gem 'dalli'
+gem 'passenger'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'sass-rails', '~>4.0.0.rc1'
+gem 'coffee-rails', '~>4.0.0.rc1'
 
-gem 'pg'
+gem 'mysql2'
 
 ## Front End
 gem 'jquery-rails'
-gem 'jquery-ui-rails', '2.0.2'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
-gem 'jquery-datatables-rails'
-gem 'ajax-datatables-rails'
 gem 'momentjs-rails'
 gem 'haml' #temporary for developing the confirmation screen
 
+gem 'uglifier', '>= 1.0.3'
 ## Pagination
 # gem 'will_paginate'
 
@@ -41,15 +38,10 @@ gem 'haml' #temporary for developing the confirmation screen
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
-
+gem 'capistrano'
+gem 'rvm-capistrano'
 # To use debugger
 # gem 'debugger'
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
-gem 'coffee-rails'
-gem 'therubyracer'
-gem 'uglifier', '>= 1.0.3'
-gem 'closure-compiler'
