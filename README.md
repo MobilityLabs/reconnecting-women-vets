@@ -33,3 +33,4 @@ reconnecting-women-vets
 * `ssh git@github.com` to add host key
 * `cap deploy`
 * If you get an error then ssh into server and do bundle install
+* Ensure you are using the same ruby version locally as the server

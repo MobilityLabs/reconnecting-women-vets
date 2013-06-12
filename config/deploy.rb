@@ -8,7 +8,7 @@ set :rvm_autolibs_flag, "read-only"        # more info: rvm help autolibs
 # before 'deploy:setup', 'rvm:create_gemset' # only create gemset
 
 # set :normalize_asset_timestamps, false     # assets haven't been compiled yet
-set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+
 set :application, "reconnecting.mobility-labs.com"
 
 # Version Control Stuff
