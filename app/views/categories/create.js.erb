@@ -1,6 +1,7 @@
-$('#categories').append('<%= escape_javascript(render @category) %>');
+$('<%= escape_javascript(render @category) %>').addClass('unsorted').appendTo('#categories');
 $('.category').detach().sort(function(a,b) {
-  return $(a).find('td').first().text() > $(b).find('td').first().text() 
+  return $(a).find('td.sortby').text() > $(b).find('td.sortby').text() 
 }).appendTo('#categories');
+$('.category').removeClass('unsorted');
 $('#notice').text('Resource category was successfully created.')
 $('#category_name').val('');

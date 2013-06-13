@@ -1,5 +1,5 @@
 %tr.pathway{id: "pathway_#{pathway.id}"}
-  %td= link_to pathway.name, pathway
+  %td.sortby= link_to pathway.name, pathway
   %td
     = link_to 'Edit', edit_pathway_path(pathway)
     = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }

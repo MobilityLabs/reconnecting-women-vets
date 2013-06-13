@@ -1,6 +1,7 @@
-$('#pathways').append('<%= escape_javascript(render @pathway) %>');
+$('<%= escape_javascript(render @pathway) %>').addClass('unsorted').appendTo('#pathways');
 $('.pathway').detach().sort(function(a,b) {
-  return $(a).find('td').first().text() > $(b).find('td').first().text() 
+  return $(a).find('td.sortby').text() > $(b).find('td.sortby').text() 
 }).appendTo('#pathways');
+$('.pathway').removeClass('unsorted');
 $('#notice').text('Resource pathway was successfully created.')
 $('#pathway_name').val('');
