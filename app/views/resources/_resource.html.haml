@@ -1,5 +1,5 @@
 %tr.resource{id: "resource_#{resource.id}"}
-  %td= link_to resource.name, resource
+  %td.sortby= link_to resource.name, resource
   %td= resource.link
   %td= resource.starting_weight
   %td.category= link_to resource.category.name, resource.category if resource.category.present?

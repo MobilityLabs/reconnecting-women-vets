@@ -1,30 +1,34 @@
-%p#notice= notice
+.row-fluid
+  .span12
+    %p#notice= notice
 
-%h1
-  Name: #{@pathway.name}
-- @pathway.questions.each do |question|
-  .row-fluid
-    .span12
-      .row-fluid
-        %label Question Text
-        = question.text
-      .row-fluid
-        .span12
-          %h3 Actions
-          - question.actions.each do |action|
-            .row-fluid
-              .span4
-                %p
-                  Action Text: 
-                  = action.text
-              .span4
-                %p
-                  Go To Pathway: 
-                  = action.goto_pathway.name unless action.goto_pathway.blank?
-              .span4
-                %p
-                  Connected Resource: 
-                  = action.connected_resource.name unless action.connected_resource.blank?
+.row-fluid
+  .span6
+    %h4= "Pathway: #{@pathway.name}"
 
-= link_to 'Edit', edit_pathway_path(@pathway)
-= link_to 'Back', pathways_path
+    %div
+      %span= link_to 'Edit', edit_pathway_path(@category)
+      \|
+      %span= link_to 'Back', pathways_path
+
+    %h4
+      Questions for
+      %i= @pathway.name
+
+    %table(border=true)
+      %thead
+        %tr
+          %th Question
+          %th Order
+          %th Actions
+      %tbody.pathway#questions
+        - @questions.each do |question|
+          = render question
+
+    - if @questions.empty?
+      %br
+      %p= "There are no questions for this pathway."
+
+  .span6
+    %h4 Add a new question
+    = render partial: 'questions/form'

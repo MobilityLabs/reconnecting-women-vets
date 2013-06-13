@@ -1,0 +1,8 @@
+debugger;
+$('<%= escape_javascript(render partial: @question) %>').addClass('unsorted').appendTo('#questions');
+$('.question').detach().sort(function(a,b) {
+  return parseInt($(a).find('.sortby').text()) > parseInt($(b).find('.sortby').text())
+}).appendTo('#questions');
+$('.question').removeClass('unsorted');
+$('#notice').text('Question was successfully created.')
+$('.question_attribute').val('');

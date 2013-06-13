@@ -2,7 +2,8 @@ class PathwaysController < ApplicationController
   # GET /pathways
   # GET /pathways.json
   def index
-    @pathways = Pathway.all
+    @pathways = Pathway.order(:name).all
+    @pathway = Pathway.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,8 @@ class PathwaysController < ApplicationController
   # GET /pathways/1.json
   def show
     @pathway = Pathway.find(params[:id])
+    @questions = Question.where(pathway_id: @pathway.id).order(:order)
+    @question = Question.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,9 +48,11 @@ class PathwaysController < ApplicationController
     respond_to do |format|
       if @pathway.save
         format.html { redirect_to @pathway, notice: 'Pathway was successfully created.' }
+        format.js   {}
         format.json { render json: @pathway, status: :created, location: @pathway }
       else
         format.html { render action: "new" }
+        format.js   {}
         format.json { render json: @pathway.errors, status: :unprocessable_entity }
       end
     end
@@ -61,9 +66,11 @@ class PathwaysController < ApplicationController
     respond_to do |format|
       if @pathway.update_attributes(pathway_params)
         format.html { redirect_to @pathway, notice: 'Pathway was successfully updated.' }
+        format.js   {}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js   {}
         format.json { render json: @pathway.errors, status: :unprocessable_entity }
       end
     end
@@ -77,6 +84,7 @@ class PathwaysController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to pathways_url }
+      format.js   {}
       format.json { head :no_content }
     end
   end

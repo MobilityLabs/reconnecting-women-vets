@@ -1,0 +1,6 @@
+$('#pathways').append('<%= escape_javascript(render @pathway) %>');
+$('.pathway').detach().sort(function(a,b) {
+  return $(a).find('td').first().text() > $(b).find('td').first().text() 
+}).appendTo('#pathways');
+$('#notice').text('Resource pathway was successfully created.')
+$('#pathway_name').val('');

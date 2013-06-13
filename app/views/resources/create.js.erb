@@ -1,6 +1,6 @@
 $('<%= escape_javascript(render partial: @resource) %>').addClass('unsorted').appendTo('#resources');
 $('.resource').detach().sort(function(a,b) {
-  return $(a).find('td').first().text() > $(b).find('td').first().text()
+  return $(a).find('td.sortby').text() > $(b).find('td.sortby').text()
 }).appendTo('#resources');
 $('.resource').removeClass('unsorted');
 $('#notice').text('Resource was successfully created.')

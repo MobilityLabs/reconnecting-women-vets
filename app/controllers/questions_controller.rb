@@ -2,7 +2,13 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.select('questions.*')
+                         .joins(:pathway)
+                         .order('pathways.name, questions.order')
+                         .all
+    @question = Question.new
+
+    @pathways = Pathway.order(:name).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +20,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.find(params[:id])
+    @parent_pathway = Pathway.find(@question.pathway_id)
+    @actions = Action.where(question_id: @question.id) # TODO: order???
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,21 +44,23 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @question = Question.find(params[:id])
-    @pathways = Pathway.all.collect{ |rc| [rc.name, rc.id]}
-    @resources = Resource.all.collect{ |rc| [rc.name, rc.id]}
+    @parent_pathway = Pathway.find(@question.pathway_id)
+    @pathways = Pathway.order(:name)
   end
 
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(params[:question])
+    @question = Question.new(params[:question].permit(:text, :order, :pathway_id))
 
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.js   {}
         format.json { render json: @question, status: :created, location: @question }
       else
         format.html { render action: "new" }
+        format.js   {}
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
@@ -62,11 +72,13 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      if @question.update_attributes(params[:question])
+      if @question.update_attributes(params[:question].permit(:text, :order, :pathway_id))
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.js   {}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js   {}
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
@@ -80,6 +92,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to questions_url }
+      format.js   {}
       format.json { head :no_content }
     end
   end

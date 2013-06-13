@@ -1,9 +1,17 @@
-%p#notice= notice
+.row-fluid
+  .span12
+    %p#notice= notice
 
-%p
-  %b Text:
-  = @question.text
+.row-fluid
+  .span6
+    %h4 Question
+
+    %p
+      %b Text:
+      = @question.text
 
 = link_to 'Edit', edit_question_path(@question)
 \|
 = link_to 'Back', questions_path
+\|
+= link_to 'Pathway', @parent_pathway

@@ -3,18 +3,17 @@
     %p#notice= notice
 
 .row-fluid
-  .span12
-    %b Category Name:
-    = @category.name
+  .span6
+    %h4= "Category: #{@category.name}"
 
     %div
       %span= link_to 'Edit', edit_category_path(@category)
       \|
       %span= link_to 'Back', categories_path
 
-    %br
-
-    %p Resources for this category:
+    %h4
+      Resources for
+      %i= @category.name
 
     %table(border=true)
       %thead
@@ -23,7 +22,15 @@
           %th Link
           %th Starting Weight
           %th Actions
-      %tbody.category{id: "resources"}
-        = render partial: 'resources/new'
+      %tbody.category#resources
         - @resources.each do |resource|
           = render resource
+
+    - if @resources.empty?
+      %br
+      %p= "There are no resources for this category."
+
+  .span6
+    %h4 Add a new resource
+    = render partial: 'resources/form'
+

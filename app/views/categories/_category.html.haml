@@ -1,4 +1,4 @@
-%tr{id: "category_#{category.id}", class: "category"}
+%tr.category{id: "category_#{category.id}"}
   %td= link_to category.name, category
   %td
     = link_to 'Edit', edit_category_path(category)

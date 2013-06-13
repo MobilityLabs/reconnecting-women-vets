@@ -1,15 +1,23 @@
 = form_for(@resource, remote: true) do |f|
-  %tr
-    %td= f.text_field :name, class: "resource_attribute"
-    %td= f.text_field :link, class: "resource_attribute"
-    %td= f.number_field :starting_weight, class: "resource_attribute"
-    - if @category.present?
-      %td.category
-        = link_to @category.name, @category
-        = f.hidden_field :category_id, value: @category.id
-    - else
-      - selected = ['', nil]
-      - selected = [@resource.category.name, @resource.category.id] if @resource.category.present?
-      %td.category= f.select :category_id, options_for_select(@categories.collect{ |rc| [rc.name, rc.id]}, selected), { include_blank: true }, class: "resource_attribute"
-    %td
-      = f.submit 'Save', class: 'btn'
+  %table(border=true)
+    %thead
+      %tr
+        %th Name
+        %th Link
+        %th Starting Weight
+        %th Actions
+    %tbody
+      %tr
+        %td= f.text_field :name, class: "resource_attribute"
+        %td= f.text_field :link, class: "resource_attribute"
+        %td= f.number_field :starting_weight, class: "resource_attribute"
+        - if @category.present?
+          %td.category
+            = link_to @category.name, @category
+            = f.hidden_field :category_id, value: @category.id
+        - else
+          - selected = ['', nil]
+          - selected = [@resource.category.name, @resource.category.id] if @resource.category.present?
+          %td.category= f.select :category_id, options_for_select(@categories.collect{ |rc| [rc.name, rc.id]}, selected), { include_blank: true }, class: "resource_attribute"
+        %td
+          = f.submit 'Save', class: 'btn'
