@@ -11,4 +11,8 @@
     = render partial: 'form', locals: {remote: true}
 .row-fluid
   .span6
-    = link_to 'Back', @resource
+    = link_to 'Resource', @resource
+    \|
+    = link_to 'Category', @resource.category
+    \|
+    = link_to 'Resources', resources_path

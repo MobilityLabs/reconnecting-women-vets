@@ -19,9 +19,9 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.find(params[:id])
+    @question = Question.includes(:actions).find(params[:id])
     @parent_pathway = Pathway.find(@question.pathway_id)
-    @actions = Action.where(question_id: @question.id) # TODO: order???
+    # @actions = Action.where(question_id: @question.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -33,8 +33,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new.json
   def new
     @question = Question.new
-    @pathways = Pathway.all.collect{ |rc| [rc.name, rc.id]}
-    @resources = Resource.all.collect{ |rc| [rc.name, rc.id]}
+    @pathways = Pathway.order(:name)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @question }
@@ -43,7 +42,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @question = Question.find(params[:id])
+    @question = Question.includes(:actions).find(params[:id])
     @parent_pathway = Pathway.find(@question.pathway_id)
     @pathways = Pathway.order(:name)
   end
@@ -51,7 +50,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(params[:question].permit(:text, :order, :pathway_id))
+    @question = Question.new(permitted_params)
 
     respond_to do |format|
       if @question.save
@@ -72,7 +71,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      if @question.update_attributes(params[:question].permit(:text, :order, :pathway_id))
+      if @question.update_attributes(permitted_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.js   {}
         format.json { head :no_content }
@@ -96,4 +95,17 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+
+  def permitted_params
+    params[:question].permit(:text,
+                             :order,
+                             :pathway_id,
+                             actions_attributes: [:text,
+                                                  :id,
+                                                  :pathway_id,
+                                                  :_destroy])
+  end
+
 end

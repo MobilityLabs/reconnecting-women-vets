@@ -9,7 +9,9 @@
 .row-fluid
   .span6
     = render partial: 'form', locals: {disabled: true}
-    = link_to 'Edit', edit_resource_path, class: 'btn'
+    / = link_to 'Edit', edit_resource_path, class: 'btn'
 .row-fluid
   .span6
-    = link_to 'Back', resources_path
+    = link_to 'Resources', resources_path
+    \|
+    = link_to 'Category', @resource.category

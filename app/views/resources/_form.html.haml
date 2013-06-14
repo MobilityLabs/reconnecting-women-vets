@@ -24,4 +24,7 @@
       = f.label :category
       = f.select :category_id, options_for_select(@categories.collect{ |rc| [rc.name, rc.id]}, selected), { include_blank: true }, class: "resource_attribute", disabled: disabled
   .actions
-    = f.submit 'Save', class: 'btn' unless disabled
+    - if disabled
+      = link_to 'Edit', edit_resource_path(@resource), class: 'btn'
+    - else
+      = f.submit 'Save', class: 'btn'

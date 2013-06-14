@@ -1,0 +1,35 @@
+= form.fields_for :actions do |f|
+
+  .row-fluid
+    .span12
+      .well
+
+        - if f.object.present? && f.object.new_record?
+          .row-fluid
+            .span12
+              %h4 Add a new Action
+
+        .row-fluid
+          .span12
+            .field
+              .control-group
+                = f.label :text, class: 'control-label'
+                .controls
+                  = f.text_area :text, rows: 2, class: 'question_attribute'
+
+        .row-fluid
+          .span12
+            .field
+              .control-group
+                = f.label :pathway_id, class: 'control-label'
+                .controls
+                  = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(default via question)'}
+
+        - unless f.object.nil? || f.object.new_record?
+          .row-fluid
+            .span12
+              .field
+                .control-group
+                  = f.label :_destroy, 'Remove:', class: 'control-label'
+                  .controls
+                    = f.check_box :_destroy

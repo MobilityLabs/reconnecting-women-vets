@@ -10,8 +10,21 @@
       %b Text:
       = @question.text
 
-= link_to 'Edit', edit_question_path(@question)
-\|
-= link_to 'Back', questions_path
-\|
-= link_to 'Pathway', @parent_pathway
+    %p= "Pathway: #{@question.pathway.name if @question.pathway.present?}"
+
+    %span
+      = link_to 'Edit', edit_question_path(@question)
+      \|
+      = link_to 'Back', questions_path
+      \|
+      = link_to 'Pathway', @parent_pathway
+
+    %h4= "Actions"
+
+    %table(border=true)
+      %thead
+        %th Text
+        %th Goto pathway
+      %tbody
+        = render @question.actions
+

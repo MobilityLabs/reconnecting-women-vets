@@ -1,23 +1,41 @@
-= form_for(@question, remote: true) do |f|
-  - if @question.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
-      %ul
-        - @question.errors.full_messages.each do |msg|
-          %li= msg
+- @question.actions.build
+= form_for(@question, html: {class: 'form-horizontal'}, remote: true) do |f|
+  .row-fluid
+    .span6
+      = content_for :subtitle
+      - if @question.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@question.errors.count, "error")} prohibited this question from being saved:"
+          %ul
+            - @question.errors.full_messages.each do |msg|
+              %li= msg
 
-  .field
-    - if @pathway.present?
-      = f.hidden_field :pathway_id, value: @pathway.id
-    - else
-      = f.label :pathway
-      = f.select :pathway_id, options_for_select(@pathways.to_a.map {|p| [p.name, p.id]}), class: 'question_attribute'
-  .field
-    = f.label :order
-    = f.text_field :order, class: 'question_attribute'
-  .field
-    = f.label :text
-    = f.text_area :text, size: '400x4', style: 'width: 400px', class: 'question_attribute'
+      .field
+        - if @pathway.present?
+          = f.hidden_field :pathway_id, value: @pathway.id
+        - else
+          .control-group
+            = f.label :pathway, class: 'control-label'
+            .controls
+              = f.select :pathway_id, options_for_select(@pathways.to_a.map {|p| [p.name, p.id]}), class: 'question_attribute'
+      .field
+        .control-group
+          = f.label :order, class: 'control-label'
+          .controls
+            = f.text_field :order, class: 'question_attribute'
+      .field
+        .control-group
+          = f.label :text, class: 'control-label'
+          .controls
+            = f.text_area :text, rows: 2, class: 'question_attribute'
 
-  .actions
-    = f.submit 'Save'
+      .actions
+        = f.submit 'Save'
+
+    .span6
+      .row-fluid
+        .span12
+          %h4 Actions
+      .row-fluid
+        .span12
+          = render partial: 'actions/form', locals: {form: f}
