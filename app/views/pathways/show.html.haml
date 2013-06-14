@@ -25,10 +25,6 @@
         - @questions.each do |question|
           = render question
 
-    - if @questions.empty?
-      %br
-      %p= "There are no questions for this pathway."
-
   .span6
     %h4 Add a new question
     = render partial: 'questions/form'

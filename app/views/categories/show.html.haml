@@ -26,10 +26,6 @@
         - @resources.each do |resource|
           = render resource
 
-    - if @resources.empty?
-      %br
-      %p= "There are no resources for this category."
-
   .span6
     %h4 Add a new resource
     = render partial: 'resources/form'
