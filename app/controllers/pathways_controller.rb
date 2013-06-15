@@ -15,6 +15,7 @@ class PathwaysController < ApplicationController
   # GET /pathways/1.json
   def show
     @pathway = Pathway.find(params[:id])
+    @pathways = Pathway.order(:name)
     @questions = Question.where(pathway_id: @pathway.id).order(:order)
     @question = Question.new
 

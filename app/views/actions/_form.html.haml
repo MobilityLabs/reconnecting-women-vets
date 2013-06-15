@@ -21,9 +21,9 @@
           .span12
             .field
               .control-group
-                = f.label :pathway_id, class: 'control-label'
+                = f.label :pathway_id, 'Goto pathway', class: 'control-label'
                 .controls
-                  = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(default via question)'}
+                  = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(continue on current)'}
 
         - unless f.object.nil? || f.object.new_record?
           .row-fluid

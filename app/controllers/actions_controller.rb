@@ -1,5 +1,9 @@
 class ActionsController < ApplicationController
 
+  def index
+    @pathways = Pathway.all
+  end
+
   def show
     @action = Action.find(params[:id])
   end

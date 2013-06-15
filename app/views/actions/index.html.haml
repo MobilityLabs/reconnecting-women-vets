@@ -1,2 +1,27 @@
-%h1 Actions#index
-%p Find me in app/views/actions/index.html.erb
+.row-fluid
+  .span12
+    %p#notice= notice
+
+.row-fluid
+  .span6
+    .row-fluid
+      .span6
+        %table(border=true)
+          %thead
+            %tr
+              %th Question
+              %th Text
+              %th Pathway
+          %tbody
+            - @pathways.each do |pathway|
+              - pathway.questions.each do |question|
+                - question.actions.each do |action|
+                  %tr.action
+                    - if action.id == question.actions.first.id
+                      %td{rowspan: question.actions.count}= question.text
+                    %td= action.text
+                    %td
+                      = if action.goto_pathway.present?
+                        - action.goto_pathway.name
+                      - else
+                        - pathway.name

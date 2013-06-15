@@ -32,10 +32,11 @@
       .actions
         = f.submit 'Save'
 
-    .span6
-      .row-fluid
-        .span12
-          %h4 Actions
-      .row-fluid
-        .span12
-          = render partial: 'actions/form', locals: {form: f}
+    - if defined?(actions) ? actions : true
+      .span6
+        .row-fluid
+          .span12
+            %h4 Actions
+        .row-fluid
+          .span12
+            = render partial: 'actions/form', locals: {form: f}

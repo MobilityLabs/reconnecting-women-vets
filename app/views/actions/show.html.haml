@@ -4,32 +4,34 @@
 
 .row-fluid
   .span6
-    %h4 Action
+    .row-fluid
+      .span12
+        %h4 Action
 
-.row-fluid
-  .span6
-    %b Text:
-    = @action.text
+    .row-fluid
+      .span12
+        %b Text:
+        = @action.text
 
-.row-fluid
-  .span6
-    %b Question:
-    = @action.question.text
+    .row-fluid
+      .span12
+        %b Question:
+        = @action.question.text
 
-.row-fluid
-  .span6
-    %b Goto pathway:
-    - if @action.goto_pathway.present?
-      = link_to @action.goto_pathway.name, @action.goto_pathway
-    - else
-      = link_to @action.question.pathway.name, @action.question.pathway
-      (default via question)
+    .row-fluid
+      .span12
+        %b Goto pathway:
+        - if @action.goto_pathway.present?
+          = link_to @action.goto_pathway.name, @action.goto_pathway
+        - else
+          = link_to @action.question.pathway.name, @action.question.pathway
+          (continue on current)
 
-.row-fluid
-  .span6
-    %span
-      = link_to 'Edit', edit_action_path(@action)
-      \|
-      = link_to 'Back', actions_path
-      \|
-      = link_to 'Question', @action.question
+    .row-fluid
+      .span12
+        %span
+          = link_to 'Edit', edit_action_path(@action)
+          \|
+          = link_to 'Back', actions_path
+          \|
+          = link_to 'Question', @action.question
