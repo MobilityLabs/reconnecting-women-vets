@@ -1,0 +1,14 @@
+.masthead
+  %h3.muted Helping woman who have served
+  .navbar
+    .navbar-inner
+      .container
+        %ul.nav
+          %li{class:"#{'active' if controller == 'static_pages' && action == 'home'}"}
+            %a{href: '/'} Home
+          %li{class:"#{'active' if controller == 'static_pages' && action == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
+            %a{href: '/demonstration'} Demonstration
+          %li{class:"#{'active' if controller == 'static_pages' && action == 'strategy'}"}
+            %a{href: '/strategy'} Strategy
+          %li{class:"#{'active' if controller == 'static_pages' && action == 'contact_us'}"}
+            %a{href: '/contact-us'} Contact Us
