@@ -15,7 +15,7 @@
         - @pathways.each do |pathway|
           - new_pathway = true
           - p_rows = pathway.questions.reduce(0) {|tot, q| tot += q.actions.count }
-          - pathway.questions.order('`order`').each do |question|
+          - pathway.questions.each do |question|
             - new_question = true
             - q_rows = question.actions.count
             - question.actions.each do |action|
@@ -23,33 +23,11 @@
                 - if new_pathway
                   %td{rowspan: p_rows}= pathway.name
                 - if new_question
-                  %td{rowspan: q_rows}= "#{question.text}(#{question.order})"
-                %td= action.text
+                  %td{rowspan: q_rows}= question.text
+                %td= link_to action.text, action
                 %td
                   - if action.goto_pathway.present?
                     = action.goto_pathway.name
                   - else
                     (continue on current)
               - new_pathway = new_question = false
-
-/ .h4 Ids
-/ .row-fluid
-/   .span6
-/     .row-fluid
-/       .span12
-/         %table(border=true)
-/           %thead
-/             %tr
-/               %th Pathway
-/               %th Question
-/               %th Action
-/               %th Goto pathway
-/           %tbody
-/             - @pathways.each do |pathway|
-/               - pathway.questions.each do |question|
-/                 - question.actions.each do |action|
-/                   %tr
-/                     %td= pathway.id
-/                     %td= question.id
-/                     %td= action.id
-/                     %td= action.pathway_id

@@ -1,35 +1,23 @@
-= form.fields_for :actions do |f|
+- disabled ||= false
+= form_for(@action, remote: false) do |f|
 
-  .row-fluid
-    .span12
-      .well
+  .field
+    .control-group
+      = f.label :text, class: 'control-label'
+      .controls
+        = f.text_area :text, rows: 2, class: 'action_attribute'
 
-        - if f.object.present? && f.object.new_record?
-          .row-fluid
-            .span12
-              %h4 Add a new Action
+  .field
+    .control-group
+      = f.label :pathway_id, 'Goto pathway', class: 'control-label'
+      .controls
+        = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(continue on current)'}
 
-        .row-fluid
-          .span12
-            .field
-              .control-group
-                = f.label :text, class: 'control-label'
-                .controls
-                  = f.text_area :text, rows: 2, class: 'question_attribute'
+  .field
+    .control-group
+      = f.label :resource_ids, 'Resources', class: 'control-label'
+      .controls
+        = f.select :resource_ids, @resources.collect {|r| [r.name, r.id]}, {prompt: 'Select some resources...'}, {multiple: true, rows: 5}
 
-        .row-fluid
-          .span12
-            .field
-              .control-group
-                = f.label :pathway_id, 'Goto pathway', class: 'control-label'
-                .controls
-                  = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(continue on current)'}
-
-        - unless f.object.nil? || f.object.new_record?
-          .row-fluid
-            .span12
-              .field
-                .control-group
-                  = f.label :_destroy, 'Remove:', class: 'control-label'
-                  .controls
-                    = f.check_box :_destroy
+  .action
+    = f.submit
