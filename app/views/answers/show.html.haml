@@ -1,0 +1,52 @@
+.row-fluid
+  .span12
+    %p#notice= notice
+
+.row-fluid
+  .span6
+    .row-fluid
+      .span12
+        %h4 Answer
+
+    .row-fluid
+      .span12
+        %b Text:
+        = @answer.text
+
+    .row-fluid
+      .span12
+        %b Question:
+        = @answer.question.text
+
+    .row-fluid
+      .span12
+        %b Goto pathway:
+        - if @answer.goto_pathway.present?
+          = link_to @answer.goto_pathway.name, @answer.goto_pathway
+        - else
+          = link_to @answer.question.pathway.name, @answer.question.pathway
+          (continue on current)
+
+    .row-fluid
+      .span12
+        %span
+          = link_to 'Edit', edit_answer_path(@answer)
+          \|
+          = link_to 'Back', answers_path
+          \|
+          = link_to 'Question', @answer.question
+
+  .span6
+    .row-fluid
+      .span12
+        %h4 Resources for this Answer
+        %table(border=true)
+          %tr
+            %th Name
+            %th Link
+            %th Starting Weight
+          - @answer.resources.each do |r|
+            %tr
+              %td= r.name
+              %td= r.link
+              %td= r.starting_weight

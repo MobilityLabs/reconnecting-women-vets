@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+  layout 'admin'
+
   # GET /resources
   # GET /resources.json
   def index
@@ -48,7 +50,6 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    Rails.logger.debug "DEBUG: params = #{params.inspect}"
     @resource = Resource.new(resource_params)
 
     respond_to do |format|

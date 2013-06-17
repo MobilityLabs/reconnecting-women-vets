@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  layout 'admin'
+
   # GET /questions
   # GET /questions.json
   def index
@@ -19,9 +21,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.includes(:actions).find(params[:id])
+    @question = Question.includes(:answers).find(params[:id])
     @parent_pathway = Pathway.find(@question.pathway_id)
-    # @actions = Action.where(question_id: @question.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,7 +43,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
-    @question = Question.includes(:actions).find(params[:id])
+    @question = Question.includes(:answers).find(params[:id])
     @parent_pathway = Pathway.find(@question.pathway_id)
     @pathways = Pathway.order(:name)
   end
@@ -102,7 +103,7 @@ private
     params[:question].permit(:text,
                              :order,
                              :pathway_id,
-                             actions_attributes: [:text,
+                             answers_attributes: [:text,
                                                   :id,
                                                   :pathway_id,
                                                   :_destroy])

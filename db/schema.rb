@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 20130608180924) do
     t.datetime "updated_at"
   end
 
-  create_table "actions_pathways", force: true do |t|
-    t.integer  "action_id"
+  create_table "answers_pathways", force: true do |t|
+    t.integer  "answer_id"
     t.integer  "pathway_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "actions_resources", force: true do |t|
-    t.integer  "action_id"
+  create_table "answers_resources", force: true do |t|
+    t.integer  "answer_id"
     t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"

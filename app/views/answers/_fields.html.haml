@@ -1,4 +1,4 @@
-= form.fields_for :actions do |f|
+= form.fields_for :answers do |f|
 
   .row-fluid
     .span12
@@ -7,7 +7,7 @@
         - if f.object.present? && f.object.new_record?
           .row-fluid
             .span12
-              %h4 Add a new Action
+              %h4 Add a new Answer
 
         .row-fluid
           .span12
@@ -15,7 +15,7 @@
               .control-group
                 = f.label :text, class: 'control-label'
                 .controls
-                  = f.text_area :text, rows: 2, class: 'question_attribute'
+                  = f.text_area :text, rows: 2, class: 'answer_attribute'
 
         .row-fluid
           .span12

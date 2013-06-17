@@ -14,7 +14,7 @@
       .span12
         %fieldset
           %legend
-            Actions
-            = f.fields_for :actions do |builder|
+            Answers
+            = f.fields_for :answers do |builder|
               = render 'action_fields', f: builder
-            = link_to_add_fields "Add Actions", f, :actions
+            = link_to_add_fields "Add Answers", f, :answers

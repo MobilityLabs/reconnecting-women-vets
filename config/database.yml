@@ -5,9 +5,12 @@ development: # Currently only accessible from the lab
   reconnect:    false
   database:     reconnecting_development
   pool:         5
-  username:     reconnecting
-  password:     B!!B9hUgkzJCSKb2
-  host:         reconnecting-development.cuxx0vtbyol5.us-east-1.rds.amazonaws.com
+  # username:     reconnecting
+  # password:     B!!B9hUgkzJCSKb2
+  # host:         reconnecting-development.cuxx0vtbyol5.us-east-1.rds.amazonaws.com
+  username: test
+  password: test
+  host: localhost
 
 # # Warning: The database defined as "test" will be erased and
 # # re-generated from your development database when you run "rake".

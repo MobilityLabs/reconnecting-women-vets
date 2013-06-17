@@ -3,7 +3,7 @@ def import_resources
     resource = Resource.new()
     r_hash = row.to_hash
     resource.name = r_hash['Resource']
-    resource.category = Category.find_by_name( r_hash['category'].to_s )
+    resource.category = Category.find_by_name( r_hash['Category'].to_s )
     resource.link = r_hash['Url']
     resource.starting_weight = r_hash['Weight']
 

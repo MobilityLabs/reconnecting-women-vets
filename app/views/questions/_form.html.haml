@@ -1,4 +1,4 @@
-- @question.actions.build
+- @question.answers.build
 = form_for(@question, html: {class: 'form-horizontal'}, remote: true) do |f|
   .row-fluid
     .span6
@@ -32,11 +32,11 @@
       .actions
         = f.submit 'Save'
 
-    - if defined?(actions) ? actions : true
+    - if defined?(answers) ? answers : true
       .span6
         .row-fluid
           .span12
-            %h4 Actions
+            %h4 Answers
         .row-fluid
           .span12
-            = render partial: 'actions/fields', locals: {form: f}
+            = render partial: 'answers/fields', locals: {form: f}

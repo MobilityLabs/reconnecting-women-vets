@@ -1,8 +1,0 @@
-%tr.action{id: "action_#{action.id}"}
-  %td.sortby= link_to action.text, action
-  %td
-    - if action.goto_pathway.present?
-      = link_to action.goto_pathway.name, action.goto_pathway
-    - else
-      = link_to action.question.pathway.name, action.question.pathway
-      (continue on current)

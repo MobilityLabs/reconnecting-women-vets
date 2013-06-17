@@ -3,7 +3,7 @@
     %p#notice= notice
 
 .row-fluid
-  .span6
+  .span8
     %h4 Listing resources
     %table(border=true)
       %thead
@@ -14,8 +14,7 @@
           %th Category
           %th Actions
       %tbody{id: "resources"}
-        - @resources.each do |resource|
-          = render partial: resource
-  .span6
+        = render partial: @resources
+  .span4
     %h4 Add a new resource
     = render partial: 'form'

@@ -1,11 +1,11 @@
 - disabled ||= false
-= form_for(@action, remote: false) do |f|
+= form_for(@answer, remote: false) do |f|
 
   .field
     .control-group
       = f.label :text, class: 'control-label'
       .controls
-        = f.text_area :text, rows: 2, class: 'action_attribute'
+        = f.text_area :text, rows: 2, class: 'answer_attribute'
 
   .field
     .control-group

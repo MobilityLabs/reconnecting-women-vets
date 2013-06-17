@@ -9,25 +9,25 @@
         %tr
           %th Pathway
           %th Question
-          %th Action
+          %th Answer
           %th Goto pathway
       %tbody
         - @pathways.each do |pathway|
           - new_pathway = true
-          - p_rows = pathway.questions.reduce(0) {|tot, q| tot += q.actions.count }
+          - p_rows = pathway.questions.reduce(0) {|tot, q| tot += q.answers.count }
           - pathway.questions.each do |question|
             - new_question = true
-            - q_rows = question.actions.count
-            - question.actions.each do |action|
-              %tr.action
+            - q_rows = question.answers.count
+            - question.answers.each do |answer|
+              %tr.answer
                 - if new_pathway
                   %td{rowspan: p_rows}= pathway.name
                 - if new_question
                   %td{rowspan: q_rows}= question.text
-                %td= link_to action.text, action
+                %td= link_to answer.text, answer
                 %td
-                  - if action.goto_pathway.present?
-                    = action.goto_pathway.name
+                  - if answer.goto_pathway.present?
+                    = answer.goto_pathway.name
                   - else
                     (continue on current)
               - new_pathway = new_question = false

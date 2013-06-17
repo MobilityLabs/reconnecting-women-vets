@@ -1,4 +1,4 @@
 class Resource < ActiveRecord::Base
   belongs_to :category
-  has_and_belongs_to_many :action
+  has_and_belongs_to_many :actions
 end

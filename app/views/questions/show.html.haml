@@ -19,12 +19,12 @@
       \|
       = link_to 'Pathway', @parent_pathway
 
-    %h4= "Actions"
+    %h4= "Answers"
 
     %table(border=true)
       %thead
         %th Text
         %th Goto pathway
       %tbody
-        = render @question.actions
+        = render @question.answers
 

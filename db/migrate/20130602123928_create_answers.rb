@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration
+class CreateAnswers < ActiveRecord::Migration
   def change
-    create_table :actions do |t|
+    create_table :answers do |t|
       t.text :text
       t.integer :question_id
       t.integer :resource_id

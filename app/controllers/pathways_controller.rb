@@ -1,4 +1,6 @@
 class PathwaysController < ApplicationController
+  layout 'admin'
+
   # GET /pathways
   # GET /pathways.json
   def index

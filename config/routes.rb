@@ -6,19 +6,19 @@ Reconnecting::Application.routes.draw do
   match "strategy", to: 'static_pages#strategy', via: 'get'
 
 
-  resources :actions
-
-
   resources :categories
 
 
   resources :resources
 
 
+  resources :pathways
+
+
   resources :questions
 
 
-  resources :pathways
+  resources :answers
 
 
 end
