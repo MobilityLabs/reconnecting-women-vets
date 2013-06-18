@@ -7,6 +7,7 @@ $(function(){
   $('.' + steps[0]).show();
   $.each(steps, function(index, step){
     $('.' + step).find('.btn').click(function(e){
+      $('#privacy-notice').hide();
       $('.question-demo').hide();
       $('.like-you').hide();
       $('.' + steps[index + 1]).show();
