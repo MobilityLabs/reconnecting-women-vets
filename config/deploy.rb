@@ -30,6 +30,8 @@ set :use_sudo, false
 
 set :deploy_to, "/home/ubuntu/reconnecting"
 
+set :rails_env "production"
+
 namespace :bundle do
 
   desc "run bundle install and ensure all gem requirements are met"
