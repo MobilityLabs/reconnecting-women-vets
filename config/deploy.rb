@@ -30,7 +30,7 @@ set :use_sudo, false
 
 set :deploy_to, "/home/ubuntu/reconnecting"
 
-set :rails_env "production"
+set :rails_env, "production"
 
 namespace :bundle do
 
