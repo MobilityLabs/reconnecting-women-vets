@@ -19,7 +19,7 @@ set :branch, "master"
 
 # SSH Stuff
 set :ssh_options, { forward_agent: true }
-ssh_options[:keys] = ["~/.ssh/mob.pem"]
+ssh_options[:keys] = ["~/.ssh/mob.pem","~/.ssh/marlon.pem"]
 
 role :web, application                            # Your HTTP server, Apache/etc
 role :app, application                             # This may be the same as your `Web` server
