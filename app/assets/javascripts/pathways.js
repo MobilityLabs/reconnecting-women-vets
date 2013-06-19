@@ -6,14 +6,16 @@ $(function(){
   // Update the new template's id and name and append it to the questions
   $('button#add_question').click(function(){
     var $q = $('.question.template'),
-        $qt = $q.clone(), $qt_id = $qt.attr('id'),
+        $qt = $q.clone(),
         $qt_input = $qt.find('input'),
         $qt_label = $qt.find('label'),
-        seq = $('.question').size();
+        seq = Date.now();
 
-    $q.removeClass('template').find('button.remove_question').click(function(e){
-      $(e.target).parents('.question').remove();
-    });
+    $q.removeClass('template')
+      .find('button.remove_question')
+      .click(function(e){
+        $(e.target).parents('.question').remove();
+      });
 
     $qt_input
       .attr('id', 'pathway_questions_attributes_'+seq+'_text')
@@ -21,4 +23,5 @@ $(function(){
     $qt_label.attr('for', $qt_input.attr('id'));
     $qt.appendTo('#questions');
   });
+
 });

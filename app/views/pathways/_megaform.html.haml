@@ -1,4 +1,4 @@
-= form_for(@pathway, remote: true) do |pf|
+= form_for(@pathway, remote: true, html: {class: 'form-horizontal'}) do |pf|
   #pathway
     = pf.label :name
     = pf.text_field :name
@@ -6,13 +6,21 @@
   #questions
     - @pathway.questions.build
     = pf.fields_for :questions do |qf|
-      .question{class: "#{'template' if qf.object.present? && qf.object.new_record?}"}
-        = qf.label :text, 'Question'
-        = qf.text_field :text
-        %button.remove_question.btn.btn-danger.btn-mini.close(type='button')
-          %i.icon-trash.icon-large
-        %button.close(type='button') &times;
+      - if qf.object.present? && qf.object.new_record?
+        .question.template
+          = qf.label :text, 'New Question'
+          = qf.text_field :text
+          %button.remove_question.btn.btn-danger.btn-mini(type='button')
+            %b &times;
+      - else
+        .question
+          = qf.label :text, 'Question'
+          = qf.text_field :text
+          .control-group
+            = qf.label :_destroy, 'Remove:', class: 'control-label'
+            .controls
+              = qf.check_box :_destroy
 
-  %button#add_question(type='button') Add Question
+  %button#add_question.btn(type='button') Add Question
   .actions
-    = pf.submit 'Save Pathway'
+    = pf.submit 'Save Pathway', class: 'btn'
