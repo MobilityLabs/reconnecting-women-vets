@@ -1,10 +1,9 @@
-function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".row-fluid").hide();
-}
-
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
-}
+$(function(){
+  $('button#add_question').click(function(){
+    var $q = $('.question.template').clone().removeClass('template');
+    $q.find('button.remove_question').click(function(e){
+      $(e.target).parents('.question').remove();
+    });
+    $q.appendTo('#questions');
+  });
+});

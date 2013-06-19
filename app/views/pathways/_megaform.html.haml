@@ -1,0 +1,18 @@
+= form_for(@pathway, remote: true) do |pf|
+  #pathway
+    = pf.label :name
+    = pf.text_field :name
+
+  #questions
+    - @pathway.questions.build
+    = pf.fields_for :questions do |qf|
+      .question{class: "#{'template' if qf.object.present? && qf.object.new_record?}"}
+        = qf.label :text, 'Question'
+        = qf.text_field :text
+        %button.remove_question.btn.btn-danger.btn-mini(type='button')
+          %i.icon-trash.icon-large
+
+  %button#add_question(type='button') Add Question
+
+  .actions
+    = pf.submit 'Save Pathway'

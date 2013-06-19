@@ -4,7 +4,7 @@ class PathwaysController < ApplicationController
   # GET /pathways
   # GET /pathways.json
   def index
-    @pathways = Pathway.order(:name).all
+    @pathways = Pathway.order(:name).to_a
     @pathway = Pathway.new
 
     respond_to do |format|
@@ -33,10 +33,6 @@ class PathwaysController < ApplicationController
     @pathway = Pathway.new
     @pathways = Pathway.all.collect{ |rc| [rc.name, rc.id]}
     @resources = Resource.all.collect{ |rc| [rc.name, rc.id]}
-    5.times do
-      question = @pathway.questions.build
-      3.times { question.actions.build }
-    end
   end
 
   # GET /pathways/1/edit

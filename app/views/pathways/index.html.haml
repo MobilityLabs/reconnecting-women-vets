@@ -13,6 +13,8 @@
       %tbody#pathways
         - @pathways.each do |pathway|
           = render partial: pathway
+      %tfoot
+        = render partial: Pathway.new
   .span6
     %h4 Add a new pathway:
-    = render partial: 'form'
+    = render partial: 'megaform'
