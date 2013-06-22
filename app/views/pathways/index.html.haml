@@ -12,8 +12,7 @@
       %tfoot
         = render partial: Pathway.new
       %tbody#pathways
-        - @pathways.each do |pathway|
-          = render partial: pathway
+        = render @pathways
 
   .span8
     %h4 Add a new pathway:
