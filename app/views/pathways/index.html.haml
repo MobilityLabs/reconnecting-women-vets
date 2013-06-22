@@ -1,6 +1,5 @@
-.row-fluid.notice
-  .span12
-    %p#notice= notice
+= render 'layouts/notice'
+
 .row-fluid.pathways-listing
   .span4
     %h4 Listing pathways
@@ -15,6 +14,8 @@
       %tbody#pathways
         - @pathways.each do |pathway|
           = render partial: pathway
+
   .span8
     %h4 Add a new pathway:
+
     = render partial: 'megaform'

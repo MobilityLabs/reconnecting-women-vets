@@ -15,19 +15,6 @@ $(function(){
         }
       });
 
-      // if (id != undefined) {
-      //   var v = id.match(new RegExp(val+'_\\d+_'))[0],
-      //       va = v.split('_'),
-      //       d = parseInt(va[va.length-2],10) + 1;
-      //   $el.attr('id', id.replace(v, val+'_'+d+'_'));
-      // }
-      // if (for_id != undefined) {
-      //   var v = for_id.match(new RegExp(val+'_\\d+_'))[0],
-      //       va = v.split('_'),
-      //       d = parseInt(va[va.length-2],10) + 1;
-      //   $el.attr('for', for_id.replace(v, val+'_'+d+'_'));
-      // }
-
       if (name != undefined) {
         var v = name.match(new RegExp('\\['+val+'\\]\\[\\d+\\]'))[0],
             va = v.split(']['),

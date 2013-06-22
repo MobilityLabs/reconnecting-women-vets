@@ -1,7 +1,15 @@
-%h4 Editing pathway
+= render 'layouts/notice'
 
+.row-fluid
+  .span12
+    %h4 Editing pathway
+
+.row-fluid
+  .span12
 = render 'megaform'
 
-= link_to 'Show', @pathway
-\|
-= link_to 'Back', pathways_path
+.row-fluid
+  .span12
+    = link_to 'Show', @pathway
+    \|
+    = link_to 'Back', pathways_path
