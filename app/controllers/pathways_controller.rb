@@ -97,7 +97,7 @@ class PathwaysController < ApplicationController
                                         :pathway_id,
                                         :order,
                                         :_destroy,
-                                        actions_attributes: [
+                                        answers_attributes: [
                                           :id,
                                           :text,
                                           :question_id,

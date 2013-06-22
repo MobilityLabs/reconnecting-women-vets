@@ -1,0 +1,29 @@
+.questions
+  - @pathway.questions.build
+  = pf.fields_for :questions do |qf|
+    - if qf.object.present? && qf.object.new_record?
+      .question.template
+        .row-fluid.question-template
+          .offset1.span11
+            = qf.label :text, 'New Question'
+            = qf.text_field :text
+            %button.remove_question.btn.btn-danger.btn-mini(type='button')
+              %b &times;
+        .row-fluid.add-answer-button
+          .offset1.span11
+            %button.add_answer.btn.btn-mini(type='button') Add Answer
+        = render partial: 'megaform_answers', locals: {qf: qf}
+    - else
+      .question
+        .row-fluid.question-actual
+          .offset1.span11
+            = qf.label :text, 'Question'
+            = qf.text_field :text
+            .control-group
+              = qf.label :_destroy, 'Remove:'
+              .controls
+                = qf.check_box :_destroy
+        .row-fluid.add-answer-button
+          .offset1.span11
+            %button.add_answer.btn(type='button') Add Answer (Existing Question)
+        = render partial: 'megaform_answers', locals: {qf: qf}

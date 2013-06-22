@@ -1,7 +1,7 @@
-$('<%= escape_javascript(render partial: @question) %>').addClass('unsorted').appendTo('#questions');
-$('.question').detach().sort(function(a,b) {
+$('<%= escape_javascript(render partial: @question) %>').addClass('unsorted').appendTo('tbody#questions');
+$('tbody#questions > .question').detach().sort(function(a,b) {
   return parseInt($(a).find('td.sortby').text()) > parseInt($(b).find('td.sortby').text())
-}).appendTo('#questions');
-$('.question').removeClass('unsorted');
+}).appendTo('tbody#questions');
+$('tbody#questions > .question').removeClass('unsorted');
 $('#notice').text('Question was successfully created.')
 $('.question_attribute').val('');

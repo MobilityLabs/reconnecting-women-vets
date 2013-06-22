@@ -1,8 +1,8 @@
-.row-fluid
+.row-fluid.notice
   .span12
     %p#notice= notice
-.row-fluid
-  .span6
+.row-fluid.pathways-listing
+  .span4
     %h4 Listing pathways
 
     %table(border=true)
@@ -15,6 +15,6 @@
       %tbody#pathways
         - @pathways.each do |pathway|
           = render partial: pathway
-  .span6
+  .span8
     %h4 Add a new pathway:
     = render partial: 'megaform'
