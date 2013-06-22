@@ -5,7 +5,6 @@ class PathwaysController < ApplicationController
   # GET /pathways.json
   def index
     @pathways = Pathway.order(:name).to_a
-    @pathway = Pathway.new
 
     respond_to do |format|
       format.html # index.html.erb
