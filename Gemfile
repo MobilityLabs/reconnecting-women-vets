@@ -23,7 +23,7 @@ gem 'uglifier', '>= 1.0.3'
 # gem 'will_paginate'
 
 ## Authentication
-# gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
+gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 ## File Uploads

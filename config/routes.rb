@@ -1,5 +1,6 @@
 Reconnecting::Application.routes.draw do
 
+  devise_for :admins
   match "/", to: 'static_pages#home', via: 'get'
   match "demonstration", to: 'static_pages#demonstration', via: 'get'
   match "contact-us", to: 'static_pages#contact_us', via: 'get'
@@ -20,5 +21,7 @@ Reconnecting::Application.routes.draw do
 
   resources :answers
 
+  # added per devise instructions
+  root to: 'static_pages#home'
 
 end
