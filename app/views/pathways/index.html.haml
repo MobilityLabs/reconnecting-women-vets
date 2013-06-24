@@ -24,7 +24,7 @@
                       %td{rowspan: p_rows}= link_to pathway.name, pathway
                       - new_pathway = false
                     - if new_question
-                      %td{rowspan: q_rows}= question.text
+                      %td{rowspan: q_rows}= link_to question.text, question
                       - new_question = false
                     %td= link_to answer.text, answer
                     %td
