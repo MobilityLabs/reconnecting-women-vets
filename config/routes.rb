@@ -17,7 +17,9 @@ Reconnecting::Application.routes.draw do
 
 
   resources :questions
-
+  namespace :ux do
+    resources :questions, only: :show
+  end
 
   resources :answers
 
