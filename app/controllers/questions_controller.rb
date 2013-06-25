@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_admin!
-  layout 'admin'
+  skip_before_filter :authenticate_admin!, only: :show
+  layout :pick_layout
 
   # GET /questions
   # GET /questions.json
@@ -22,8 +23,9 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.includes(:answers).find(params[:id])
-    @parent_pathway = Pathway.find(@question.pathway_id)
+    @question = Question.includes(:answers, :pathway).find(params[:id])
+    @query = request.query_parameters
+    @query[:p] ||= ''
 
     respond_to do |format|
       format.html # show.html.erb
@@ -108,6 +110,10 @@ private
                                                   :id,
                                                   :pathway_id,
                                                   :_destroy])
+  end
+
+  def pick_layout
+    admin_signed_in? ? 'admin' : 'application'
   end
 
 end

@@ -15,8 +15,4 @@
 
       %tbody#questions
         - @questions.each do |question|
-          = render partial: question
-
-  .span6
-    %h2 Add a question:
-    = render partial: 'form', locals: {answers: false}
+          = render partial: question, locals: {with_actions: true}

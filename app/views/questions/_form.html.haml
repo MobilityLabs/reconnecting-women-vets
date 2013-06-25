@@ -11,13 +11,10 @@
               %li= msg
 
       .field
-        - if @pathway.present?
-          = f.hidden_field :pathway_id, value: @pathway.id
-        - else
-          .control-group
-            = f.label :pathway, class: 'control-label'
-            .controls
-              = f.select :pathway_id, options_for_select(@pathways.to_a.map {|p| [p.name, p.id]}), class: 'question_attribute'
+        .control-group
+          = f.label :pathway_id, class: 'control-label'
+          .controls
+            = f.select :pathway_id, @pathways.to_a.map {|p| [p.name, p.id]}, class: 'question_attribute'
       .field
         .control-group
           = f.label :order, class: 'control-label'

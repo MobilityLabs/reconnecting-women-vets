@@ -1,30 +1,29 @@
 .row-fluid
-  .span12
-    %p#notice= notice
-
-.row-fluid
   .span6
-    %h4 Question
+    .row-fluid
+      .span12
+        %h4 Pathway
+      .offset1.span11
+        = link_to @question.pathway.name, @question.pathway
+    .row-fluid
+      .span12
+        %h4 Question
+      .offset1.span11
+        %b Text:
+        = @question.text
 
-    %p
-      %b Text:
-      = @question.text
+    .row-fluid
+      .span12
+        = link_to 'Edit', edit_question_path(@question)
 
-    %p= "Pathway: #{@question.pathway.name if @question.pathway.present?}"
+  .span6
+    .row-fluid
+      .span12
+        %h4= "Answers"
 
-    %span
-      = link_to 'Edit', edit_question_path(@question)
-      \|
-      = link_to 'Back', questions_path
-      \|
-      = link_to 'Pathway', @parent_pathway
-
-    %h4= "Answers"
-
-    %table(border=true)
-      %thead
-        %th Text
-        %th Goto pathway
-      %tbody
-        = render @question.answers
-
+        %table(border=true)
+          %thead
+            %th Text
+            %th Goto pathway
+          %tbody
+            = render @question.answers

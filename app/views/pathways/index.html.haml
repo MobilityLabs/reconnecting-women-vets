@@ -4,6 +4,7 @@
       %thead
         %tr
           %th Pathway
+          %th Actions
           %th Question
           %th Answer
           %th Goto pathway
@@ -17,9 +18,12 @@
                 - new_question = true
                 - q_rows = [question.answers.count, 1].max
                 - question.answers.each do |answer|
-                  %tr.answer
+                  %tr{class: "pathway_#{pathway.id}"}
                     - if new_pathway
-                      %td{rowspan: p_rows}= link_to pathway.name, pathway
+                      %td{rowspan: p_rows}
+                        = link_to pathway.name, pathway
+                      %td{rowspan: p_rows}
+                        = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
                       - new_pathway = false
                     - if new_question
                       %td{rowspan: q_rows}= link_to question.text, question
@@ -31,16 +35,19 @@
                       - else
                         (continue on current)
               - else
-                %tr.question-no-answers
+                %tr{class: "pathway_#{pathway.id}"}
                   - if new_pathway
                     %td{rowspan: p_rows}= link_to pathway.name, pathway
+                    %td{rowspan: p_rows}
+                      = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
                     - new_pathway = false
                   %td= link_to question.text, question
                   %td
                   %td
           - else
-            %tr.pathway-no-questions
+            %tr{class: "pathway_#{pathway.id}"}
               %td= link_to pathway.name, pathway
+              %td= link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
               %td
               %td
               %td
@@ -49,4 +56,4 @@
 
 .row-fluid
   .span12
-    = link_to 'New', new_pathway_path, class: 'btn'
+    = link_to 'New', new_pathway_path, class: 'btn btn-mini'

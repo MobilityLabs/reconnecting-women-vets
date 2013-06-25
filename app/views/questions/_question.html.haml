@@ -1,7 +1,9 @@
 %tr.question{id: "question_#{question.id}"}
-  %td.pathway= question.pathway.name
+  - if with_pathway ||= false
+    %td.pathway= question.pathway.name
   %td= link_to question.text, question
   %td.sortby= question.order
-  %td
-    = link_to 'Edit', edit_question_path(question)
-    = link_to 'Destroy', question, method: :delete, remote: true, data: { confirm: 'Are you sure?' }
+  - if with_actions ||= false
+    %td
+      = link_to 'Edit', edit_question_path(question)
+      = link_to 'Destroy', question, method: :delete, remote: true, data: { confirm: 'Are you sure?' }
