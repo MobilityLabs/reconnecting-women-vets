@@ -1,5 +1,6 @@
 !!!
 = render partial: 'layouts/common'
+= render partial: 'layouts/admin_session'
 %html
   %head
     = content_for :title
@@ -15,6 +16,7 @@
               = render partial: 'layouts/masthead'
           .row
             .span12
+              = render partial: 'layouts/notice'
               = yield
         #push
     #footer

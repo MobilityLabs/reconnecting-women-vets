@@ -5,11 +5,11 @@
         = pf.label :name
         = pf.text_field :name
 
+    = render partial: 'megaform_questions', locals: {pf: pf}
+
     .row-fluid.add-question-button
       .span12
         %button.add_question.btn.btn-mini(type='button') Add Question
-
-    = render partial: 'megaform_questions', locals: {pf: pf}
 
     .row-fluid.submit-button
       .span12

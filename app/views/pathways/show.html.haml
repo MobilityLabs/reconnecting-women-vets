@@ -1,30 +1,24 @@
 .row-fluid
-  .span12
-    %p#notice= notice
-
-.row-fluid
   .span6
-    %h4= "Pathway: #{@pathway.name}"
+    .row-fluid
+      .span12
+        %h4 Pathway
+      .offset1.span11
+        = @pathway.name
 
-    %div
-      %span= link_to 'Edit', edit_pathway_path(@pathway)
-      \|
-      %span= link_to 'Back', pathways_path
+    .row-fluid
+      .span12
+        = link_to 'Edit', edit_pathway_path(@pathway), class: 'btn btn-small'
+        = link_to 'Destroy', @pathway, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small'
+        = link_to 'Show All', pathways_path, class: 'btn btn-small'
 
-    %h4
-      Questions for
-      %i= @pathway.name
+  .span6
+    %h4= "Questions for #{@pathway.name}"
 
     %table(border=true)
       %thead
         %tr
           %th Question
           %th Order
-          %th Actions
-      %tbody.pathway#questions
-        - @questions.each do |question|
-          = render question
-
-  .span6
-    %h4 Add a new question
-    = render partial: 'questions/form', locals: {answers: false}
+      %tbody
+        = render partial: @pathway.questions

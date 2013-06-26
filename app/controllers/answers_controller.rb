@@ -1,8 +1,13 @@
 class AnswersController < ApplicationController
+  before_filter :authenticate_admin!
   layout 'admin'
 
   def index
-    @pathways = Pathway.all
+    redirect_to pathways_path
+  end
+
+  def new
+    redirect_to pathways_path
   end
 
   def show
