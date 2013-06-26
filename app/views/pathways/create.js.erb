@@ -1,7 +1,18 @@
-$('<%= escape_javascript(render @pathway) %>').addClass('unsorted').appendTo('#pathways');
-$('#pathways > .pathway').detach().sort(function(a,b) {
-  return $(a).find('td.sortby').text() > $(b).find('td.sortby').text() 
-}).appendTo('#pathways');
-$('#pathways > .pathway').removeClass('unsorted');
-$('#notice').text('Resource pathway was successfully created.')
-$('#pathway_name').val('');
+(function($pathways){
+
+  if ($pathways.size() > 0) {
+    $('<%= escape_javascript(render @pathway) %>').addClass('unsorted').appendTo('#pathways');
+    $('#pathways > .pathway').detach().sort(function(a,b) {
+      return $(a).find('td.sortby').text() > $(b).find('td.sortby').text()
+    }).appendTo('#pathways');
+    $('#pathways > .pathway').removeClass('unsorted');
+    $('#notice').text('Resource pathway was successfully created.')
+    $('.pathway').find('.question:not(.template)').remove()
+    $('#pathway_name').val('');
+  }
+  else
+  {
+    window.location.assign("<%= pathway_path(@pathway) %>");
+  }
+
+}).call(this, $('tbody#pathways'));

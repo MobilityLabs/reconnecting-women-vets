@@ -1,18 +1,17 @@
-= form_for(@pathway, remote: true) do |pf|
-  #pathway
-    = pf.label :name
-    = pf.text_field :name
+= form_for(@pathway, remote: true, html: {class: 'form-horizontal'}) do |pf|
+  .pathway
+    .row-fluid.pathway-fields
+      .span12
+        = pf.label :name
+        = pf.text_field :name
 
-  #questions
-    - @pathway.questions.build
-    = pf.fields_for :questions do |qf|
-      .question{class: "#{'template' if qf.object.present? && qf.object.new_record?}"}
-        = qf.label :text, 'Question'
-        = qf.text_field :text
-        %button.remove_question.btn.btn-danger.btn-mini.close(type='button')
-          %i.icon-trash.icon-large
-        %button.close(type='button') &times;
+    .row-fluid.add-question-button
+      .span12
+        %button.add_question.btn.btn-mini(type='button') Add Question
 
-  %button#add_question(type='button') Add Question
-  .actions
-    = pf.submit 'Save Pathway'
+    = render partial: 'megaform_questions', locals: {pf: pf}
+
+    .row-fluid.submit-button
+      .span12
+        .actions
+          = pf.submit 'Save Pathway', class: 'btn'

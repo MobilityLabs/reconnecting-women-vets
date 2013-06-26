@@ -1,0 +1,21 @@
+.answers
+  - qf.object.answers.build
+  = qf.fields_for :answers do |af|
+    - if af.object.present? && af.object.new_record?
+      .answer.template
+        .row-fluid.answer-template
+          .offset2.span10
+            = af.label :text, 'Answer'
+            = af.text_field :text
+            %button.remove_answer.btn.btn-danger.btn-mini(type='button')
+              %b &times;
+    - else
+      .answer
+        .row-fluid.answer-actual
+          .offset2.span10
+            = af.label :text, 'Answer'
+            = af.text_field :text
+            .control-group
+              = af.label :_destroy, 'Remove:'
+              .controls
+                = af.check_box :_destroy

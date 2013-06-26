@@ -1,0 +1,20 @@
+= render 'layouts/notice'
+
+.row-fluid.pathways-listing
+  .span4
+    %h4 Listing pathways
+
+    %table(border=true)
+      %thead
+        %tr
+          %th Name
+          %th Actions
+      %tfoot
+        = render partial: Pathway.new
+      %tbody#pathways
+        = render @pathways
+
+  .span8
+    %h4 Add a new pathway:
+
+    = render partial: 'megaform'

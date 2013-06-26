@@ -4,7 +4,6 @@ ruby '2.0.0'
 
 gem 'rake'
 gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
-gem 'turbolinks'
 gem 'passenger'
 
 gem 'sass-rails', '~>4.0.0.rc1'

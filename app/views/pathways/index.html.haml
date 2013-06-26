@@ -1,20 +1,54 @@
+= render 'layouts/notice'
+
 .row-fluid
   .span12
-    %p#notice= notice
-.row-fluid
-  .span6
-    %h4 Listing pathways
-
     %table(border=true)
       %thead
         %tr
-          %th Name
-          %th Actions
-      %tfoot
-        = render partial: Pathway.new
-      %tbody#pathways
+          %th Pathway
+          %th Question
+          %th Answer
+          %th Goto pathway
+      %tbody
         - @pathways.each do |pathway|
-          = render partial: pathway
-  .span6
-    %h4 Add a new pathway:
-    = render partial: 'megaform'
+          - if pathway.questions.count > 0
+            - new_pathway = true
+            - p_rows = pathway.questions.reduce(0) {|tot, q| tot += [q.answers.count, 1].max }
+            - pathway.questions.each do |question|
+              - if question.answers.count > 0
+                - new_question = true
+                - q_rows = [question.answers.count, 1].max
+                - question.answers.each do |answer|
+                  %tr.answer
+                    - if new_pathway
+                      %td{rowspan: p_rows}= link_to pathway.name, pathway
+                      - new_pathway = false
+                    - if new_question
+                      %td{rowspan: q_rows}= link_to question.text, question
+                      - new_question = false
+                    %td= link_to answer.text, answer
+                    %td
+                      - if answer.goto_pathway.present?
+                        = answer.goto_pathway.name
+                      - else
+                        (continue on current)
+              - else
+                %tr.question-no-answers
+                  - if new_pathway
+                    %td{rowspan: p_rows}= link_to pathway.name, pathway
+                    - new_pathway = false
+                  %td= link_to question.text, question
+                  %td
+                  %td
+          - else
+            %tr.pathway-no-questions
+              %td= link_to pathway.name, pathway
+              %td
+              %td
+              %td
+
+%br
+
+.row-fluid
+  .span12
+    = link_to 'New', new_pathway_path, class: 'btn'

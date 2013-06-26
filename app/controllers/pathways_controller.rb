@@ -5,7 +5,6 @@ class PathwaysController < ApplicationController
   # GET /pathways.json
   def index
     @pathways = Pathway.order(:name).to_a
-    @pathway = Pathway.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -90,7 +89,21 @@ class PathwaysController < ApplicationController
 
   private
     def pathway_params
-      params.require(:pathway).permit(:name, questions_attributes: [:text, :pathway_id, :order, :_destroy,
-                                      actions_attributes: [:text, :question_id, :resource_id, :pathway_id, :_destroy]])
+      params.require(:pathway).permit(:name,
+                                      questions_attributes: [
+                                        :id,
+                                        :text,
+                                        :pathway_id,
+                                        :order,
+                                        :_destroy,
+                                        answers_attributes: [
+                                          :id,
+                                          :text,
+                                          :question_id,
+                                          :resource_id,
+                                          :pathway_id,
+                                          :_destroy ]
+                                        ]
+                                      )
     end
 end
