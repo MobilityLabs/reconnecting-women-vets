@@ -3,11 +3,11 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rake'
-gem "rails", "~> 4.0.0.rc1", github: "rails/rails", branch: "4-0-stable"
+gem "rails", github: "rails/rails", branch: "4-0-stable"
 gem 'passenger'
 
-gem 'sass-rails', '~>4.0.0.rc1'
-gem 'coffee-rails', '~>4.0.0.rc1'
+gem 'sass-rails', '~>4.0.0'
+gem 'coffee-rails', '~>4.0.0'
 
 gem 'mysql2'
 
