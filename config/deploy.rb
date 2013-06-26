@@ -40,4 +40,4 @@ namespace :bundle do
   end
 
 end
-after "deploy:restart", "bundle:install"
+before "deploy:assets:precompile", "bundle:install"
