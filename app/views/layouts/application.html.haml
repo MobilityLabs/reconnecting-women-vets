@@ -15,7 +15,7 @@
               = render partial: 'layouts/masthead'
           .row
             .offset2.span8
-              = render partial: 'layouts/notice'
+              = render partial: 'layouts/notice' unless notice.blank? && alert.blank?
               = yield
         #push
     #footer

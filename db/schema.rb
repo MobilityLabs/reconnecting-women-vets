@@ -13,6 +13,29 @@
 
 ActiveRecord::Schema.define(version: 20130624154806) do
 
+  create_table "actions", force: true do |t|
+    t.text     "text"
+    t.integer  "question_id"
+    t.integer  "resource_id"
+    t.integer  "pathway_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "actions_pathways", force: true do |t|
+    t.integer  "action_id"
+    t.integer  "pathway_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "actions_resources", force: true do |t|
+    t.integer  "action_id"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -30,29 +53,6 @@ ActiveRecord::Schema.define(version: 20130624154806) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
-
-  create_table "answers", force: true do |t|
-    t.text     "text"
-    t.integer  "question_id"
-    t.integer  "resource_id"
-    t.integer  "pathway_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "answers_pathways", force: true do |t|
-    t.integer  "answer_id"
-    t.integer  "pathway_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "answers_resources", force: true do |t|
-    t.integer  "answer_id"
-    t.integer  "resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "categories", force: true do |t|
     t.text     "name"
