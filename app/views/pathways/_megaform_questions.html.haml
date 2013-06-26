@@ -8,17 +8,17 @@
   = pf.fields_for :questions do |qf|
     - if qf.object.present? && qf.object.new_record?
       .question.template
-        .row-fluid.question-template
+        .row-fluid
           .offset1.span11
             = qf.label :text, 'New Question'
-            = qf.text_field :text, size: '20x5'
+            = qf.text_field :text
             %button.remove_question.btn.btn-danger.btn-mini(type='button')
               %b &times;
         = render partial: 'megaform_answers', locals: {qf: qf}
         = content_for :add_answer_button
     - else
       .question
-        .row-fluid.question-actual
+        .row-fluid
           .offset1.span11
             = qf.label :text, 'Question'
             = qf.text_field :text

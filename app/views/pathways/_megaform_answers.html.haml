@@ -3,7 +3,7 @@
   = qf.fields_for :answers do |af|
     - if af.object.present? && af.object.new_record?
       .answer.template
-        .row-fluid.answer-template
+        .row-fluid
           .offset2.span10
             = af.label :text, 'Answer'
             = af.text_field :text
@@ -11,7 +11,7 @@
               %b &times;
     - else
       .answer
-        .row-fluid.answer-actual
+        .row-fluid
           .offset2.span10
             = af.label :text, 'Answer'
             = af.text_field :text
