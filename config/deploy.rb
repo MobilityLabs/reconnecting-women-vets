@@ -40,4 +40,13 @@ namespace :bundle do
   end
 
 end
-after "deploy:restart", "bundle:install"
+
+# This is for restarting nginx after deployment
+namespace :deploy do
+ task :start do ; end
+ task :stop do ; end
+ task :restart, :roles => :app, :except => { :no_release => true } do
+   run "#{sudo} service nginx #{command}"
+ end
+end
+# before "deploy:assets:precompile", "bundle:install"
