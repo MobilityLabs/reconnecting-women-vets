@@ -1,4 +1,8 @@
 - content_for :admin_session do
-  %li
-    - if admin_signed_in?
+  - if admin_signed_in?
+    %li{class:"#{'active' if controller_name == 'admins'}"}
+      = link_to "Admins", admins_path
+    %li{class:"#{'active' if controller_name == 'pathways'}"}
+      = link_to "Pathways", pathways_path
+    %li
       = link_to "Sign Out", destroy_admin_session_path, method: :delete
