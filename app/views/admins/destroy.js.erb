@@ -1,2 +1,6 @@
-$('tr#admin_<%= @admin.id %>').remove();
-$('#notice').text('Admin was successfully deleted.')
+$('tr.just-deleted').remove();
+$('tr#admin_<%= @admin.id %>').addClass('just-deleted')
+  .find('td.actions').replaceWith('<p>Deleted</p>');
+$('#alert').empty()
+  .append($('<%= escape_javascript(render partial: "layouts/alert") %>'))
+  .find('.alert').text('Admin <%= @admin.email %> was successfully deleted.')

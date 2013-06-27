@@ -1,3 +1,5 @@
 $('.just-confirmed').removeClass('just-confirmed');
 $('#admin_<%= @admin.id %>').replaceWith($('<%= escape_javascript(render partial: @admin, locals: {just_confirmed: true}) %>'));
-$('#notice').text('Admin was successfully confirmed.')
+$('#notice').empty()
+  .append($('<%= escape_javascript(render partial: "layouts/notice") %>'))
+  .find('.notice').text('Admin <%= @admin.email %> was successfully confirmed.')

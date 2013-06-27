@@ -2,12 +2,11 @@ class AdminsController < ApplicationController
   layout 'admin'
 
   def index
-    @admins = Admin.all
+    @admins = Admin.order(:email).all
   end
 
   def confirm
     @admin = Admin.find(params[:id])
-    Rails.logger.debug "DEBUG: confirming #{@admin.inspect}"
     if @admin.confirm!
       respond_to do |format|
         format.html { redirect_to admins_path, notice: 'Confirmed!'}

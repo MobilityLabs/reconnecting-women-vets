@@ -1,10 +1,13 @@
-%tr.admin{id: "admin_#{admin.id}", class: "#{'just-confirmed' if defined?(just_confirmed) && just_confirmed}"}
+- eye_candy = []
+- eye_candy << 'self' if admin.id == current_admin.id
+- eye_candy << 'just-confirmed' if defined?(just_confirmed) && just_confirmed
+%tr.admin{id: "admin_#{admin.id}", class: "#{eye_candy.join ' '}"}
   %td.sortby= admin.email
   %td= admin.confirmation_token
   %td= admin.confirmed_at
   %td= admin.confirmation_sent_at
   %td= admin.unconfirmed_email
-  %td
+  %td.actions
     - unless admin.confirmed?
       = form_for admin, remote: true, url: '/admins/confirm' do |f|
         = hidden_field_tag :id, admin.id
