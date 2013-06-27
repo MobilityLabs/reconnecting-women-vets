@@ -40,41 +40,24 @@ ActiveRecord::Schema.define(version: 20130624154806) do
     t.integer  "question_id"
     t.integer  "resource_id"
     t.integer  "pathway_id"
+    t.text     "reassurance"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "actions_pathways", force: true do |t|
-    t.integer  "action_id"
+  create_table "answers_pathways", force: true do |t|
+    t.integer  "answer_id"
     t.integer  "pathway_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "actions_resources", force: true do |t|
-    t.integer  "action_id"
+  create_table "answers_resources", force: true do |t|
+    t.integer  "answer_id"
     t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "admins", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "categories", force: true do |t|
     t.text     "name"

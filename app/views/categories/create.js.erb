@@ -1,4 +1,5 @@
-$('<%= escape_javascript(render @category) %>').addClass('unsorted').appendTo('#categories');
+$('.category').removeClass('just-created');
+$('<%= escape_javascript(render @category) %>').addClass('unsorted just-created').appendTo('#categories');
 $('.category').detach().sort(function(a,b) {
   return $(a).find('td.sortby').text() > $(b).find('td.sortby').text() 
 }).appendTo('#categories');

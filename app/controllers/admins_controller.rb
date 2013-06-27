@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
   layout 'admin'
 
   def index
-    @admins = Admin.order(:email).all
+    @admins = Admin.order(:email).to_a
   end
 
   def confirm
