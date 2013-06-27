@@ -1,0 +1,3 @@
+$('.just-confirmed').removeClass('just-confirmed');
+$('#admin_<%= @admin.id %>').replaceWith($('<%= escape_javascript(render partial: @admin, locals: {just_confirmed: true}) %>'));
+$('#notice').text('Admin was successfully confirmed.')

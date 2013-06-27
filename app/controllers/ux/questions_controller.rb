@@ -1,4 +1,5 @@
 class Ux::QuestionsController < ApplicationController
+  skip_before_filter :authenticate_admin!
 
   def show
     @question = Question.includes(:answers, :pathway).find(params[:id])

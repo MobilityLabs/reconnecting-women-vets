@@ -1,0 +1,14 @@
+%tr.admin{id: "admin_#{admin.id}", class: "#{'just-confirmed' if defined?(just_confirmed) && just_confirmed}"}
+  %td.sortby= admin.email
+  %td= admin.confirmation_token
+  %td= admin.confirmed_at
+  %td= admin.confirmation_sent_at
+  %td= admin.unconfirmed_email
+  %td
+    - unless admin.confirmed?
+      = form_for admin, remote: true, url: '/admins/confirm' do |f|
+        = hidden_field_tag :id, admin.id
+        = f.submit 'Confirm!', class: 'btn btn-mini btn-warning'
+    - unless Rails.env.production?
+      - if admin.confirmed? && admin.id != current_admin.id
+        = link_to 'Delete', admin, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'

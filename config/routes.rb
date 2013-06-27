@@ -7,6 +7,10 @@ Reconnecting::Application.routes.draw do
   match "strategy", to: 'static_pages#strategy', via: 'get'
 
 
+  resources :admins, only: [:index, :show, :destroy]
+  match 'admins/confirm', to: 'admins#confirm', via: [:put, :patch]
+
+
   resources :categories
 
 

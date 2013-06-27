@@ -11,3 +11,5 @@ require 'csv'
 require_relative 'seeds/categories.rb'
 
 require_relative 'seeds/resources.rb'
+
+require_relative 'seeds/admins.rb'

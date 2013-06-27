@@ -1,0 +1,13 @@
+.row-fluid
+  .span12
+    %table(border=1)
+      %thead
+        %tr
+          %th E-mail
+          %th Confirmation Token
+          %th Confirmed At
+          %th Confirmation Sent At
+          %th Unconfirmed Email
+          %th Actions
+      %tbody#admins
+        = render @admins, just_confirmed: false
