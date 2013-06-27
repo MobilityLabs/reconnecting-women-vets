@@ -1,3 +1,5 @@
+require 'csv'
+
 def import_resources
   CSV.foreach('./db/resources.csv', headers: true, col_sep: ',') do |row|
     resource = Resource.new()
