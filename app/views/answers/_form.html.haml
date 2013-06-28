@@ -16,7 +16,7 @@
     .control-group
       = f.label :pathway_id, 'Goto pathway', class: 'control-label'
       .controls
-        = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(continue on current)'}
+        = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(return to previous)'}
 
   .field
     .control-group

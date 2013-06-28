@@ -6,7 +6,9 @@ class Ux::QuestionsController < ApplicationController
     @query = request.query_parameters
     @query[:p] ||= ''
 
-    @reassurance = Answer.find(@query[:a]).reassurance if @query[:a].present?
+    answers = @query[:p].split ','
+
+    @reassurance = Answer.find(answers.first).reassurance if answers.first.present?
 
     respond_to do |format|
       format.html # show.html.erb

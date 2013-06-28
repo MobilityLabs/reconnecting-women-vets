@@ -1,15 +1,17 @@
--if @reassurance.present?
+- if @reassurance.present?
   .well
-    %h3= @reassurance
+    %h3
+      %i= @reassurance
 
 .hero-unit
   %h2= @question.text
 
 - @question.answers.each do |answer|
   - if answer.next_question
-    - p = @query[:p].split(',') << @question.id.to_s
-    - url = url_for([:ux, answer.next_question]) + '?p=' + p.join(',') + "&a=#{answer.id}"
+    - p = @query[:p].split(',') << answer.id.to_s
+    - url = url_for([:ux, answer.next_question]) + '?p=' + p.join(',')
     = link_to url, class: 'hero-unit btn btn-large btn-info' do
       %h3= answer.text
   - else
-    = link_to answer.text, '#', class: 'hero-unit btn btn-large btn-info'
+    - if admin_signed_in?
+      = link_to answer.text, edit_answer_path(answer), class: "hero-unit btn btn-large btn-danger path-error"
