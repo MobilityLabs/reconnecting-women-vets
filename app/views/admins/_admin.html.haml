@@ -4,8 +4,8 @@
 %tr.admin{id: "admin_#{admin.id}", class: "#{eye_candy.join ' '}"}
   %td.sortby= admin.email
   %td= admin.confirmation_token
-  %td= admin.confirmed_at
-  %td= admin.confirmation_sent_at
+  %td.utc= admin.confirmed_at
+  %td.utc= admin.confirmation_sent_at
   %td= admin.unconfirmed_email
   %td.actions
     - unless admin.confirmed?
