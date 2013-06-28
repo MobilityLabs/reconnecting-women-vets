@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   layout 'admin'
 
   def index
-    redirect_to pathways_path
+    @answers = Answer.all
   end
 
   def new
@@ -15,8 +15,8 @@ class AnswersController < ApplicationController
 
   def edit
     @answer = Answer.find(params[:id])
-    @pathways = Pathway.order(:name)
-    @resources = Resource.all
+    @pathways = Pathway.order(:name).to_a
+    @resources = Resource.order(:name).to_a
   end
 
   def update
@@ -37,9 +37,7 @@ class AnswersController < ApplicationController
 private
 
   def answer_params
-    res = params[:answer].permit(:text, :pathway_id, resource_ids: [])
-    Rails.logger.debug "DEBUG: permitted params = #{res.inspect}"
-    res
+    params[:answer].permit(:text, :reassurance, :pathway_id, resource_ids: [])
   end
 
 end

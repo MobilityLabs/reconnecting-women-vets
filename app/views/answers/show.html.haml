@@ -22,6 +22,11 @@
 
         .row-fluid
           .span12
+            %b Reassurance:
+            = @answer.reassurance
+
+        .row-fluid
+          .span12
             %b Goto pathway:
             - if @answer.goto_pathway.present?
               = link_to @answer.goto_pathway.name, @answer.goto_pathway

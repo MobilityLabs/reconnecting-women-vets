@@ -31,6 +31,7 @@ $(function(){
 
     $at.find('input[id*="answers_attributes"]').each(increment_sequences("answers_attributes"));
     $at.find('label[for*="answers_attributes"]').each(increment_sequences("answers_attributes"));
+    $at.find('textarea[id*="answers_attributes"]').each(increment_sequences("answers_attributes"));
 
     $at.appendTo($as);
 
@@ -52,6 +53,7 @@ $(function(){
 
     $qt.find('input[id*="questions_attributes"]').each(increment_sequences("questions_attributes"));
     $qt.find('label[for*="questions_attributes"]').each(increment_sequences("questions_attributes"));
+    $qt.find('textarea[id*="questions_attributes"]').each(increment_sequences("questions_attributes"));
     $qt.find('button.add_answer').click(add_answer);
 
     $qt.appendTo($qs);

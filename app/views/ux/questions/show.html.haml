@@ -1,10 +1,14 @@
+-if @reassurance.present?
+  .well
+    %h3= @reassurance
+
 .hero-unit
   %h2= @question.text
 
 - @question.answers.each do |answer|
   - if answer.next_question
     - p = @query[:p].split(',') << @question.id.to_s
-    - url = url_for([:ux, answer.next_question]) + '?p=' + p.join(',')
+    - url = url_for([:ux, answer.next_question]) + '?p=' + p.join(',') + "&a=#{answer.id}"
     = link_to url, class: 'hero-unit btn btn-large btn-info' do
       %h3= answer.text
   - else

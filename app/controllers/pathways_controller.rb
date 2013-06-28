@@ -99,6 +99,7 @@ class PathwaysController < ApplicationController
                                         answers_attributes: [
                                           :id,
                                           :text,
+                                          :reassurance,
                                           :question_id,
                                           :resource_id,
                                           :pathway_id,
