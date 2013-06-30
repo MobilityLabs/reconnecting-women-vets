@@ -1,10 +1,10 @@
 Reconnecting::Application.routes.draw do
 
   devise_for :admins
-  match "/", to: 'static_pages#home', via: 'get'
-  match "demonstration", to: 'static_pages#demonstration', via: 'get'
-  match "contact-us", to: 'static_pages#contact_us', via: 'get'
-  match "strategy", to: 'static_pages#strategy', via: 'get'
+  match "/", to: 'static_pages#home', via: :get
+  match "demonstration", to: 'static_pages#demonstration', via: :get
+  match "contact-us", to: 'static_pages#contact_us', via: :get
+  match "strategy", to: 'static_pages#strategy', via: :get
 
 
   resources :admins, only: [:index, :show, :destroy]
@@ -18,6 +18,13 @@ Reconnecting::Application.routes.draw do
 
 
   resources :pathways
+  match "pathways/:id/questions", to: 'pathways#questions',
+        as: :pathway_questions_order, via: :get
+  # resources :pathways do
+  #   resources :questions do
+  #     resources :answers
+  #   end
+  # end
 
 
   resources :questions

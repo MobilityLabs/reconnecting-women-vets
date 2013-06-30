@@ -1,0 +1,18 @@
+.row-fluid
+  .span12
+    %h4
+      Reordering questions for
+      %i= @pathway.name
+
+.row-fluid
+  .span12
+    %ol#questions-order
+      - @pathway.questions.each do |question|
+        %li.ui-state-default{id: question.id}
+          .sortable-question= question.text
+
+.row-fluid
+  .span12
+    = form_for @pathway do |f|
+      = f.hidden_field :questions_order
+      = f.submit 'Update Pathway', id: 'submit-questions-order'

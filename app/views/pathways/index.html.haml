@@ -36,7 +36,7 @@
                         = answer.goto_pathway.name
                       - else
                         (return to previous)
-                    %td= link_to 'Next', ux_question_path(answer.next_question), target: '_blank' if answer.next_question
+                    %td= link_to 'Next', ux_question_path(answer.next_question) + "?p=#{answer.id}", target: '_blank' if answer.next_question.present?
               - else
                 %tr{class: "pathway_#{pathway.id}"}
                   - if new_pathway
