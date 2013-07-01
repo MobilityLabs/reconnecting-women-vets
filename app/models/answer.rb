@@ -20,9 +20,10 @@ private
     if goto_pathway.present?
       goto_pathway.questions.first
     else
-      # there's no goto_pathway, so process a return to the previous pathway,
+      # there's no goto_pathway (it's not present? i.e. null),
+      # so process a return to the previous pathway,
       # based on the path that led to this question
-      path_taken.each do |answer_id|
+      path_taken.reverse.each do |answer_id|
         begin
           answer = Answer.find(answer_id)
           if answer.question.pathway_id != self.question.pathway_id
@@ -34,6 +35,7 @@ private
           Rails.logger.info "Answer not found for id# #{answer_id}"
         end
       end
+      nil
     end
   end
 

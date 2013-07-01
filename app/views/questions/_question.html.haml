@@ -2,7 +2,11 @@
   - if with_pathway ||= false
     %td.pathway= question.pathway.name
   %td= link_to question.text, question
-  %td.sortby= question.order
+  %td.sortby
+    - if question.order.present?
+      = question.order
+    - else
+      = content_for :update_order_button
   - if with_actions ||= false
     %td
       = link_to 'Edit', edit_question_path(question)

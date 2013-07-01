@@ -15,7 +15,10 @@
     %h4= "Questions for #{@pathway.name}"
 
     - needs_ordering = @pathway.questions.find_index {|q| q.order.nil? }
-    %p= link_to 'Update Questions Order', pathway_questions_order_path(@pathway), class: "btn btn-mini#{' btn-warning' if needs_ordering}"
+    - content_for :update_order_button do
+      = link_to 'Update', pathway_questions_order_path(@pathway), class: 'btn btn-mini btn-warning'
+
+    %p= link_to 'Update Ordering', pathway_questions_order_path(@pathway), class: 'btn btn-mini'
 
     %table(border=true)
       %thead

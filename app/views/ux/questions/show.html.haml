@@ -11,8 +11,7 @@
     - @question.answers.each do |answer|
       - next_question = answer.next_question(@path_taken)
       - if next_question.present?
-        - url = url_for([:ux, next_question])
-        - url += '?p=' + @path_taken.join(',') + answer.id.to_s
+        - url = "#{ux_question_path(next_question)}?p=#{@path_taken.join(',')},#{answer.id.to_s}"
         = link_to url, class: 'hero-unit btn btn-large btn-info' do
           %h3= answer.text
       - else
