@@ -14,12 +14,13 @@
   .span6
     %h4= "Questions for #{@pathway.name}"
 
-    %p= link_to 'Update Questions Order', pathway_questions_order_path(@pathway), class: 'btn btn-mini'
+    - needs_ordering = @pathway.questions.find_index {|q| q.order.nil? }
+    %p= link_to 'Update Questions Order', pathway_questions_order_path(@pathway), class: "btn btn-mini#{' btn-warning' if needs_ordering}"
 
     %table(border=true)
       %thead
         %tr
           %th Question
           %th Order
-      %tbody
+      %tbody#questions
         = render partial: @pathway.questions

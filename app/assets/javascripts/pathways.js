@@ -69,10 +69,11 @@ $(function(){
   $('button.add_question').click(add_question);
   $('button.add_answer').click(add_answer);
 
-  $('#questions-order').sortable({ cursor: "move" });
-  $('#questions-order').disableSelection();
-  $('#submit-questions-order').click(function(e){
-    $('#pathway_questions_order').val($('#questions-order').sortable('toArray'));
+  $('#questions-order').sortable({
+    cursor: "move",
+    update: function(e, ui) {
+      $('#pathway_questions_order').val($(e.target).sortable('toArray'));
+    }
   });
 
 });

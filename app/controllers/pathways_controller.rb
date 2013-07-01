@@ -112,7 +112,7 @@ class PathwaysController < ApplicationController
       @pathway.destroy
 
       respond_to do |format|
-        format.html { redirect_to pathways_url }
+        format.html { redirect_to pathways_url, notice: 'Pathway was successfully deleted.' }
         format.js   {}
         format.json { head :no_content }
       end
