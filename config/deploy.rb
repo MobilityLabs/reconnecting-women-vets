@@ -38,7 +38,6 @@ namespace :bundle do
   task :install do
     run "cd #{current_path} && bundle install"
   end
-
 end
 
 # This is for restarting nginx after deployment
