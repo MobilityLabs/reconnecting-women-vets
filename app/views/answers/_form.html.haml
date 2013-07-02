@@ -1,4 +1,3 @@
-- disabled ||= false
 = form_for(@answer, remote: false) do |f|
 
   .field
@@ -9,9 +8,15 @@
 
   .field
     .control-group
+      = f.label :reassurance, class: 'control-label'
+      .controls
+        = f.text_area :reassurance, rows: 4, class: 'answer_attribute'
+
+  .field
+    .control-group
       = f.label :pathway_id, 'Goto pathway', class: 'control-label'
       .controls
-        = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(continue on current)'}
+        = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(return to previous)'}
 
   .field
     .control-group

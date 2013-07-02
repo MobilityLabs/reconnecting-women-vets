@@ -1,5 +1,4 @@
 class ResourcesController < ApplicationController
-  before_filter :authenticate_admin!
   layout 'admin'
 
   # GET /resources

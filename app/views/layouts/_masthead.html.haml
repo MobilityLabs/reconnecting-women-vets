@@ -4,12 +4,12 @@
     .navbar-inner
       .container
         %ul.nav
-          %li{class:"#{'active' if controller == 'static_pages' && action == 'home'}"}
+          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'home'}"}
             %a{href: '/'} Home
-          %li{class:"#{'active' if controller == 'static_pages' && action == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
+          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
             %a{href: '/demonstration'} Demonstration
-          %li{class:"#{'active' if controller == 'static_pages' && action == 'strategy'}"}
+          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'strategy'}"}
             %a{href: '/strategy'} Strategy
-          %li{class:"#{'active' if controller == 'static_pages' && action == 'contact_us'}"}
+          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'contact_us'}"}
             %a{href: '/contact-us'} Contact Us
           = content_for :admin_session

@@ -2,8 +2,10 @@
   .pathway
     .row-fluid.pathway-fields
       .span12
-        = pf.label :name
-        = pf.text_field :name
+        .control-group
+          = pf.label :name, class: 'control-label'
+          .controls
+            = pf.text_field :name
 
     = render partial: 'megaform_questions', locals: {pf: pf}
 

@@ -5,6 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.integer :question_id
       t.integer :resource_id
       t.integer :pathway_id
+      t.text :reassurance
 
       t.timestamps
     end

@@ -1,11 +1,26 @@
-.hero-unit
-  %h2= @question.text
+- if @reassurance.present?
+  .well
+    %h3
+      %i= @reassurance
 
-- @question.answers.each do |answer|
-  - if answer.next_question
-    - p = @query[:p].split(',') << @question.id.to_s
-    - url = url_for([:ux, answer.next_question]) + '?p=' + p.join(',')
-    = link_to url, class: 'hero-unit btn btn-large btn-info' do
-      %h3= answer.text
-  - else
-    = link_to answer.text, '#', class: 'hero-unit btn btn-large btn-info'
+.row-fluid
+  %div{class: "span#{@resources.count > 0 ? '8' : '12'}"}
+    .hero-unit
+      %h2= @question.text
+
+    - @question.answers.each do |answer|
+      - next_question = answer.next_question(@path_taken)
+      - if next_question.present?
+        - url = "#{ux_question_path(next_question)}?p=#{@path_taken.join(',')},#{answer.id.to_s}"
+        = link_to url, class: 'hero-unit btn btn-large btn-info' do
+          %h3= answer.text
+      - else
+        - if admin_signed_in?
+          = link_to answer.text, edit_answer_path(answer), class: "hero-unit btn btn-large btn-danger path-error"
+
+  - if @resources.count > 0
+    .span4
+      %h4 Resources
+      %table(border=1)
+        %tbody
+          = render @resources

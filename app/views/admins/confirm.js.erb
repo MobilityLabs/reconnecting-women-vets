@@ -1,0 +1,8 @@
+$('tr.just-deleted').remove();
+$('tr.just-confirmed').removeClass('just-confirmed');
+$('#admin_<%= @admin.id %>').replaceWith($('<%= escape_javascript(render partial: @admin, locals: {just_confirmed: true}) %>'));
+$('#alert').empty();
+$('#notice').empty()
+  .append($('<%= escape_javascript(render partial: "layouts/notice") %>'))
+  .find('.notice').text('Admin <%= @admin.email %> was successfully confirmed.')
+utc_to_local();

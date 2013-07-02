@@ -15,10 +15,7 @@
               = render partial: 'layouts/masthead'
           .row
             .offset2.span8
-              = render partial: 'layouts/notice' unless notice.blank? && alert.blank?
+              = render partial: 'layouts/notice_and_alert'
               = yield
         #push
-    #footer
-      .inner.centered
-        %p
-          Reconnecting Women Veterans 2013
+    = content_for :footer

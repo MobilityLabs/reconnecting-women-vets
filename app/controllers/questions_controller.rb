@@ -1,7 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :authenticate_admin!
-  skip_before_filter :authenticate_admin!, only: :show
-  layout :pick_layout
+  layout 'admin'
 
   # GET /questions
   # GET /questions.json
@@ -110,10 +108,6 @@ private
                                                   :id,
                                                   :pathway_id,
                                                   :_destroy])
-  end
-
-  def pick_layout
-    admin_signed_in? ? 'admin' : 'application'
   end
 
 end

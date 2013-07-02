@@ -10,15 +10,20 @@
       .span12
         = link_to 'Edit', edit_pathway_path(@pathway), class: 'btn btn-small'
         = link_to 'Destroy', @pathway, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small'
-        = link_to 'Show All', pathways_path, class: 'btn btn-small'
 
   .span6
     %h4= "Questions for #{@pathway.name}"
+
+    - needs_ordering = @pathway.questions.find_index {|q| q.order.nil? }
+    - content_for :update_order_button do
+      = link_to 'Update', pathway_questions_order_path(@pathway), class: 'btn btn-mini btn-warning'
+
+    %p= link_to 'Update Ordering', pathway_questions_order_path(@pathway), class: 'btn btn-mini'
 
     %table(border=true)
       %thead
         %tr
           %th Question
           %th Order
-      %tbody
+      %tbody#questions
         = render partial: @pathway.questions

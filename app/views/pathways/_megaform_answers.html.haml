@@ -3,19 +3,31 @@
   = qf.fields_for :answers do |af|
     - if af.object.present? && af.object.new_record?
       .answer.template
-        .row-fluid.answer-template
+        .row-fluid
           .offset2.span10
-            = af.label :text, 'Answer'
-            = af.text_field :text
-            %button.remove_answer.btn.btn-danger.btn-mini(type='button')
-              %b &times;
+            .control-group
+              = af.label :text, 'Answer', class: 'control-label answers_attributes'
+              .controls
+                = af.text_field :text, class: 'answers_attributes'
+                %button.remove_answer.btn.btn-danger.btn-mini(type='button')
+                  %b &times;
+            .control-group
+              = af.label :reassurance, class: 'control-label answers_attributes'
+              .controls
+                = af.text_area :reassurance, class: 'answers_attributes'
     - else
       .answer
-        .row-fluid.answer-actual
+        .row-fluid
           .offset2.span10
-            = af.label :text, 'Answer'
-            = af.text_field :text
             .control-group
-              = af.label :_destroy, 'Remove:'
+              = af.label :text, 'Answer', class: 'control-label answers_attributes'
               .controls
-                = af.check_box :_destroy
+                = af.text_field :text, class: 'answers_attributes'
+            .control-group
+              = af.label :reassurance, class: 'control-label answers_attributes'
+              .controls
+                = af.text_area :reassurance, class: 'answers_attributes'
+            .control-group
+              = af.label :_destroy, 'Remove:', class: 'control-label answers_attributes'
+              .controls
+                = af.check_box :_destroy, class: 'answers_attributes'

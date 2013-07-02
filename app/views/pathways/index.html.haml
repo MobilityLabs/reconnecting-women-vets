@@ -8,6 +8,7 @@
           %th Question
           %th Answer
           %th Goto pathway
+          %th UX
       %tbody
         - @pathways.each do |pathway|
           - if pathway.questions.count > 0
@@ -23,6 +24,7 @@
                       %td{rowspan: p_rows}
                         = link_to pathway.name, pathway
                       %td{rowspan: p_rows}
+                        = link_to 'Edit', edit_pathway_path(pathway), class: 'btn btn-mini'
                         = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
                       - new_pathway = false
                     - if new_question
@@ -33,21 +35,27 @@
                       - if answer.goto_pathway.present?
                         = answer.goto_pathway.name
                       - else
-                        (continue on current)
+                        (return to previous)
+                    %td= link_to 'Next', "#{ux_question_path(answer.next_question)}?p=#{answer.id}", target: '_blank' if answer.next_question.present?
               - else
                 %tr{class: "pathway_#{pathway.id}"}
                   - if new_pathway
                     %td{rowspan: p_rows}= link_to pathway.name, pathway
                     %td{rowspan: p_rows}
+                      = link_to 'Edit', edit_pathway_path(pathway), class: 'btn btn-mini'
                       = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
                     - new_pathway = false
                   %td= link_to question.text, question
                   %td
                   %td
+                  %td
           - else
             %tr{class: "pathway_#{pathway.id}"}
               %td= link_to pathway.name, pathway
-              %td= link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
+              %td
+                = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
+                = link_to 'Edit', edit_pathway_path(pathway), class: 'btn btn-mini'
+              %td
               %td
               %td
               %td

@@ -1,7 +1,4 @@
 .row-fluid
-  .span12
-    %p#notice= notice
-.row-fluid
   .span6
     %h2 Listing questions
 
@@ -15,4 +12,4 @@
 
       %tbody#questions
         - @questions.each do |question|
-          = render partial: question, locals: {with_actions: true}
+          = render partial: question, locals: {with_pathway: true, with_actions: true}

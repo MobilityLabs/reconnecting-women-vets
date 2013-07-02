@@ -13,6 +13,7 @@ gem 'mysql2'
 
 ## Front End
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'momentjs-rails'
