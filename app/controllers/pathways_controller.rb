@@ -162,6 +162,7 @@ private
   end
 
   def handle_unspecified_error
+    Rails.logger.error "ERROR: #{$!}"
     redirect_to root_path, alert: 'Something horrible has happened.'
   end
 
