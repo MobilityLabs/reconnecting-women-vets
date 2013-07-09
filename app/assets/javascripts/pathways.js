@@ -76,4 +76,8 @@ $(function(){
     }
   });
 
+  $('td[class^="question_"]').hover(
+    function(e) { $('#'+$(this).attr('class')).addClass('highlight'); },
+    function(e) { $('#'+$(this).attr('class')).removeClass('highlight'); }
+  );
 });
