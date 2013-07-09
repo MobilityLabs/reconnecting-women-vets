@@ -13,8 +13,25 @@ Reconnecting::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # Do care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
+
+  # Set-up Action Mailer for Devise
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = ENV['AM_DELIVERY_METHOD'].to_sym
+
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SMTP_SERVER'],     #'smtp.google.com',
+    port:                 ENV['SMTP_PORT'],       #587,
+    domain:               ENV['SMTP_DOMAIN'],     #'reconnecting.mobility-labs.com',
+    user_name:            ENV['SMTP_USER'],       #'admin@mobility-labs.com'
+    password:             ENV['SMTP_PASSWORD'],   #'topsecret'.split('').shuffle.join
+    authentication:       'plain',
+    enable_starttls_auto: true  } if config.action_mailer.delivery_method == :smtp
+
+  config.action_mailer.sendmail_settings = {
+    arguments: "-au#{ENV['SMTP_USER']} -ap#{ENV['SMTP_PASSWORD']} -amLOGIN"
+  } if config.action_mailer.delivery_method == :sendmail
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -36,6 +53,4 @@ Reconnecting::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Added per devise instructions
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

@@ -27,6 +27,9 @@ gem 'uglifier', '>= 1.0.3'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
+## Configuration help
+gem 'dotenv-rails', :groups => [:development, :test]
+
 ## File Uploads
 # gem 'paperclip'
 # gem 'aws-sdk'
