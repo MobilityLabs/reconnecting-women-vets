@@ -1,11 +1,10 @@
 .masthead
-  %h3.muted Helping women who have served
   .navbar
     .navbar-inner
       .container
         %ul.nav
-          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'home'}"}
-            %a{href: '/'} Home
+          %li#site-title
+            %a{href: '/'} <span>Re</span>CONNECTING <span>W</span>omen <span>V</span>eterans
           %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
             %a{href: '/demonstration'} Demonstration
           %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'strategy'}"}
