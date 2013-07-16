@@ -2,9 +2,9 @@ reconnecting-women-vets
 =======================
 
 #How it should look when we are done:
-![reconnecting home](https://github.com/seanperkins/reconnecting/raw/master/mock_ups/reconnecting-women-veterans-01.jpg)
-![reconnecting get-started](https://github.com/seanperkins/reconnecting/raw/master/mock_ups/reconnecting-women-veterans-02.jpg)
-![reconnecting questions](https://github.com/seanperkins/reconnecting/raw/master/mock_ups/reconnecting-women-veterans-03.jpg)
+![reconnecting home](https://github.com/seanperkins/reconnecting-women-vets/raw/master/mock_ups/reconnecting-women-veterans-01.jpg)
+![reconnecting get-started](https://github.com/seanperkins/reconnecting-women-vets/raw/master/mock_ups/reconnecting-women-veterans-02.jpg)
+![reconnecting questions](https://github.com/seanperkins/reconnecting-women-vets/raw/master/mock_ups/reconnecting-women-veterans-03.jpg)
 
 #Initial Setup of New Rails App on AWS using capistrano
 
