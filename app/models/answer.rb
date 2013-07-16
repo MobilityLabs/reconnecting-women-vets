@@ -18,7 +18,19 @@ private
 
   def lookup_next_question path_taken
     if goto_pathway.present?
-      goto_pathway.questions.first
+      q = nil
+      # If we want to stay on the current pathway (i.e. my goto_pathway is my pathway),
+      # find the next question on the pathway
+      if goto_pathway.id == question.pathway_id
+        # find my index
+        ix = goto_pathway.questions.find_index question
+        # and return the next question on the pathway (if it exists)
+        q = goto_pathway.questions.at(ix+1) if ix
+      else
+        # otherwise, go to the first question of the goto pathway
+        q = goto_pathway.questions.first
+      end
+      return q if q
     else
       # there's no goto_pathway (it's not present? i.e. null),
       # so process a return to the previous pathway,
@@ -26,17 +38,14 @@ private
       path_taken.reverse.each do |answer_id|
         begin
           answer = Answer.find(answer_id)
-          if answer.question.pathway_id != self.question.pathway_id
-            return Question.where(pathway_id: answer.question.pathway_id)
-                           .where('`order` > ?', answer.question.order)
-                           .order(:order).limit(1).first
-          end
-        rescue
-          Rails.logger.info "Answer not found for id# #{answer_id}"
+          return answer.next_question if answer.question.pathway_id != question.pathway_id
+        rescue ActiveRecord::RecordNotFound
+          Rails.logger.error "Answer not found for id# #{answer_id}"
         end
       end
-      nil
     end
+    Rails.logger.error "Next answer not found for id# #{id}"
+    nil
   end
 
 end
