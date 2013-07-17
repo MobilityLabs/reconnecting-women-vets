@@ -1,13 +1,9 @@
 .row-fluid
-  .span12
-    %h4 Editing pathway
-
-.row-fluid
-  .span12
-= render 'megaform'
-
-.row-fluid
-  .span12
-    = link_to 'Show', @pathway
-    \|
-    = link_to 'Back', pathways_path
+  .span12.white
+    .row-fluid
+      .span9
+        %h2 Editing pathway
+      .span3
+        = link_to 'Show', @pathway, {class: 'btn btn-primary'}
+        = link_to 'Back', pathways_path, {class: 'btn btn-secondary'}
+    = render 'megaform'

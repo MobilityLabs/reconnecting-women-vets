@@ -7,10 +7,10 @@
 
 .centered
   text-align: center
-.question-demo, .like-you
-  display: none
 .bold
   font-weight: bold
+
+// Lots of fun button overwriting for flat ui
 .btn,
 .btn-group > .btn,
 .btn-group > .dropdown-menu,
@@ -22,8 +22,8 @@
 
 .btn 
   border: none
-  background: #bdc3c7
   color: $white
+  background-color: $gray
   padding: 9px 12px 10px
   line-height: 22px
   text-decoration: none
@@ -43,8 +43,6 @@
 .btn:hover,
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle 
-  background-color: #cacfd2
-  color: #ffffff
   outline: none
   -webkit-transition: 0.25s
   -moz-transition: 0.25s
@@ -55,16 +53,12 @@
 .btn:active,
 .btn-group.open .btn.dropdown-toggle,
 .btn.active 
-  background-color: #a1a6a9
-  color: rgba(255, 255, 255, 0.75)
   -webkit-box-shadow: none
   -moz-box-shadow: none
   box-shadow: none
 
 .btn.disabled,
 .btn[disabled] 
-  background-color: #bdc3c7
-  color: rgba(255, 255, 255, 0.75)
   -webkit-box-shadow: none
   -moz-box-shadow: none
   box-shadow: none
@@ -95,9 +89,6 @@
 
 .btn > [class^="fui-"].pull-right 
   margin-right: 0px
-
-.btn-toolbar .btn.active 
-  color: #ffffff
 
 .btn-toolbar .btn:first-child 
   -webkit-border-radius: 6px 0 0 6px
@@ -155,6 +146,25 @@
 .btn-group > .btn.btn-small + .dropdown-toggle .caret 
   margin-left: 0
   margin-right: 0
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input
+  color: $black
 
 .btn-answer
   float: left

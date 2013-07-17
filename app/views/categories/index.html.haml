@@ -2,7 +2,7 @@
   .span12
     %p#notice= notice
 .row-fluid
-  .span6
+  .span6.white
     %h4 Listing categories
 
     %table(border=true)
@@ -13,6 +13,6 @@
       %tbody#categories
         - @categories.each do |category|
           = render partial: category
-  .span6
+  .span6.white
     %h4 Add new category:
     = render partial: 'form'

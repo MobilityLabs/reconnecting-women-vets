@@ -3,16 +3,15 @@
     %p#notice= notice
 
 .row-fluid
-  .span6
-    %h4 Editing resource
+  .span6.white
+    .row-fluid
+      .span6
+        %h4 Editing resource
+      .span6
+        = link_to 'Resource', @resource, {class: 'btn'}
+        = link_to 'Category', @resource.category, {class: 'btn'}
+        = link_to 'Resources', resources_path, {class: 'btn'}
 
 .row-fluid
   .span6
     = render partial: 'form', locals: {remote: true}
-.row-fluid
-  .span6
-    = link_to 'Resource', @resource
-    \|
-    = link_to 'Category', @resource.category
-    \|
-    = link_to 'Resources', resources_path

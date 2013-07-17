@@ -2,8 +2,8 @@
   .control-group
     .controls
       .row-fluid.add-answer-button
-        .offset1.span11
-          %button.add_answer.btn.btn-mini(type='button') Add Answer
+        .offset-half.span11
+          %button.add_answer.btn.btn-mini.btn-primary(type='button') Add Answer
 
 .questions
   - @pathway.questions.build
@@ -11,7 +11,7 @@
     - if qf.object.present? && qf.object.new_record?
       .question.template
         .row-fluid
-          .offset1.span11
+          .offset-half.span10
             .control-group
               = qf.label :text, 'New Question', class: 'control-label questions_attributes'
               .controls
@@ -23,11 +23,12 @@
     - else
       .question
         .row-fluid
-          .offset1.span11
+          .offset-half.span9
             .control-group
               = qf.label :text, 'Question', class: 'control-label questions_attributes'
               .controls
                 = qf.text_field :text, class: 'questions_attributes'
+          .span2
             .control-group
               = qf.label :_destroy, 'Remove:', class: 'control-label questions_attributes'
               .controls

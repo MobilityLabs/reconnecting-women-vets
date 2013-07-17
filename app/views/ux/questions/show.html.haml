@@ -9,21 +9,19 @@
           = answer.text
       - else
         - if admin_signed_in?
-          = link_to answer.text, edit_answer_path(answer), class: "btn btn-answer btn-danger path-error"
+          = link_to answer.text, edit_answer_path(answer), class: "btn btn-answer path-error"
 
   .span4
     - if @resources.count > 0
       .row-fluid
         .span12.white
           %h2 Resources
-          %table(border=1)
-            %tbody
-              = render @resources
+          %ul#resources
+            %li= render @resources
       - if @reassurance.present?
         .row-fluid
-          .span12.blue    
-            %h2
-              %i= @reassurance
+          .span12.blue
+            %p= @reassurance
     - else
       .row-fluid
         .span12.white
@@ -31,5 +29,4 @@
       - if @reassurance.present?
         .row-fluid
           .span12.blue    
-            %h2
-              %i= @reassurance
+            %p= @reassurance

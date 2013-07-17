@@ -3,7 +3,7 @@
     %p#notice= notice
 
 .row-fluid
-  .span8
+  .span8.white
     %h4 Listing resources
     %table(border=true)
       %thead
@@ -15,6 +15,6 @@
           %th Actions
       %tbody{id: "resources"}
         = render partial: @resources
-  .span4
+  .span4.white
     %h4 Add a new resource
     = render partial: 'form'
