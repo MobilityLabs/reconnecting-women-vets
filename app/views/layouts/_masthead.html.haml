@@ -5,8 +5,8 @@
         %ul.nav
           %li#site-title
             %a{href: '/'} <span>Re</span>CONNECTING <span>W</span>omen <span>V</span>eterans
-          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
-            %a{href: '/demonstration'} Demonstration
+          %li{class:"#{'active' if params['controller'] == 'ux/questions' && params['action'] == 'show'}", data: {:'no-turbolink'=>'true'}}
+            %a{href: '/ux/questions/2'} Demonstration
           %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'strategy'}"}
             %a{href: '/strategy'} Strategy
           %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'contact_us'}"}

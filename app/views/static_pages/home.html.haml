@@ -4,7 +4,8 @@
       .span12.home-image
         %p Find Resources And Support.
         %p Get Reconnected.
-        = link_to '/', 'Get Started'
+        %div
+          = link_to 'Get Started', '/',{class: 'btn btn-inverse btn-get-started'}
     .row-fluid
       .span6.white
         %h2 Welcome
@@ -12,4 +13,6 @@
         %p We are here to help connect you to those resources most relevant to your needs.
         %p Click to get started.
       .span6.white
-        %h2 Subscribe to Newsletter
+        %h2 Subscribe for Updates
+        %p We are proud of the work we are doing. if you would like to hear about milestones that we hit. Please provide your email address below.
+        = render partial: "layouts/mailchimp_embed_form"
