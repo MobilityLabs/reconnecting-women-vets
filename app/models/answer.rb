@@ -38,13 +38,17 @@ private
       path_taken.reverse.each do |answer_id|
         begin
           answer = Answer.find(answer_id)
-          return answer.next_question if answer.question.pathway_id != question.pathway_id
+          if answer.question.pathway_id != question.pathway_id
+            ix = answer.question.pathway.questions.find_index answer.question
+            q = answer.question.pathway.questions.at(ix+1)
+            return q if q
+          end
         rescue ActiveRecord::RecordNotFound
           Rails.logger.error "Answer not found for id# #{answer_id}"
         end
       end
     end
-    Rails.logger.error "Next answer not found for id# #{id}"
+    Rails.logger.error "Next question not found for answer id# #{id}"
     nil
   end
 

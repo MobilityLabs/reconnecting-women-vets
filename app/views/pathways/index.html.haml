@@ -28,7 +28,11 @@
                         = link_to 'Destroy', pathway, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini'
                       - new_pathway = false
                     - if new_question
-                      %td{rowspan: q_rows}= link_to question.text, question
+                      %td{rowspan: q_rows}
+                        = link_to question.text, question
+                        (
+                        = link_to 'ux', ux_question_path(question), target: '_blank'
+                        )
                       - new_question = false
                     %td= link_to answer.text, answer
                     %td

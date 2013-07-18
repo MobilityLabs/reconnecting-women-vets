@@ -2,7 +2,7 @@
   .span8.white
     %h2= @question.text
     - @question.answers.each do |answer|
-      - path_taken = "#{@path_taken.join(',')},#{answer.id.to_s}"
+      - path_taken = (@path_taken + [answer.id.to_s]).join(',')
       - if answer.end_of_path
         = link_to_url "#{ux_final_path}?p=#{path_taken}"
       - else
@@ -16,21 +16,13 @@
             = link_to answer.text, edit_answer_path(answer), class: "btn btn-answer path-error"
 
   .span4
-    - if @resources.count > 0
-      .row-fluid
-        .span12.white
-          %h2 Resources
+    .row-fluid
+      .span12.white
+        %h2 Resources
+        - if @resources.count > 0
           %ul#resources
             = render @resources
-      - if @reassurance.present?
-        .row-fluid
-          .span12.blue
-            %p= @reassurance
-    - else
+    - if @reassurance.present?
       .row-fluid
-        .span12.white
-          %h2 Resources
-      - if @reassurance.present?
-        .row-fluid
-          .span12.blue    
-            %p= @reassurance
+        .span12.blue
+          %p= @reassurance
