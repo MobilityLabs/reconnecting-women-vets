@@ -32,7 +32,9 @@
                       - new_question = false
                     %td= link_to answer.text, answer
                     %td
-                      - if answer.goto_pathway.present?
+                      - if answer.end_of_path
+                        %button.btn.btn-mini.btn-danger.disabled end of path
+                      - elsif answer.goto_pathway.present?
                         = answer.goto_pathway.name
                       - else
                         (return to previous)

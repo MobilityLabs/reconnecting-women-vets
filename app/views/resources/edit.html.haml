@@ -9,7 +9,8 @@
         %h4 Editing resource
       .span6
         = link_to 'Resource', @resource, {class: 'btn'}
-        = link_to 'Category', @resource.category, {class: 'btn'}
+        - if @resource.category_id.present?
+          = link_to 'Category', @resource.category, {class: 'btn'}
         = link_to 'Resources', resources_path, {class: 'btn'}
 
 .row-fluid

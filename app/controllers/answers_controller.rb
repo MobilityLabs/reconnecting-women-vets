@@ -37,7 +37,9 @@ class AnswersController < ApplicationController
 private
 
   def answer_params
-    params[:answer].permit(:text, :reassurance, :pathway_id, resource_ids: [])
+    params[:answer].permit(:text, :reassurance,
+                           :end_of_path, :pathway_id,
+                           resource_ids: [])
   end
 
 end
