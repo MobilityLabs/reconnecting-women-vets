@@ -9,11 +9,11 @@
   %body
     #wrap
       #main
-        .container
-          .row
+        .container-fluid
+          .row-fluid
             .span8.offset2
               = render partial: 'layouts/masthead'
-          .row
+          .row-fluid
             .offset2.span8
               = render partial: 'layouts/notice_and_alert'
               = yield

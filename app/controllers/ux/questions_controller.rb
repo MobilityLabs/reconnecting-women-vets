@@ -19,4 +19,9 @@ class Ux::QuestionsController < ApplicationController
     end
   end
 
+  def final
+    @path_taken = (request.query_parameters[:p] || '').split ','
+    @resources = Resource.find_for @path_taken
+  end
+
 end

@@ -1,7 +1,7 @@
 - @question.answers.build
 = form_for(@question, html: {class: 'form-horizontal'}, remote: true) do |f|
   .row-fluid
-    .span6
+    .span6.white
       = content_for :subtitle
       - if @question.errors.any?
         #error_explanation

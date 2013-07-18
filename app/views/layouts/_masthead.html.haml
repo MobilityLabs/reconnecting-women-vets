@@ -1,13 +1,14 @@
 .masthead
-  %h3.muted Helping women who have served
   .navbar
     .navbar-inner
       .container
         %ul.nav
-          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'home'}"}
-            %a{href: '/'} Home
-          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'demonstration'}", data: {:'no-turbolink'=>'true'}}
-            %a{href: '/demonstration'} Demonstration
+          %li#site-title
+            %a{href: '/'} <span>Re</span>CONNECTING <span>W</span>omen <span>V</span>eterans
+          %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'how'}"}
+            %a{href: '/how-it-works'} How it Works
+          %li{class:"#{'active' if params['controller'] == 'ux/questions' && params['action'] == 'show'}", data: {:'no-turbolink'=>'true'}}
+            %a{href: '/ux/questions/2'} Demonstration
           %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'strategy'}"}
             %a{href: '/strategy'} Strategy
           %li{class:"#{'active' if controller_name == 'static_pages' && action_name == 'contact_us'}"}

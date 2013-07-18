@@ -4,7 +4,7 @@
     - if af.object.present? && af.object.new_record?
       .answer.template
         .row-fluid
-          .offset2.span10
+          .offset-half.span11
             .control-group
               = af.label :text, 'Answer', class: 'control-label answers_attributes'
               .controls
@@ -18,7 +18,7 @@
     - else
       .answer
         .row-fluid
-          .offset2.span10
+          .offset-half.span9
             .control-group
               = af.label :text, 'Answer', class: 'control-label answers_attributes'
               .controls
@@ -27,6 +27,7 @@
               = af.label :reassurance, class: 'control-label answers_attributes'
               .controls
                 = af.text_area :reassurance, class: 'answers_attributes'
+          .span2
             .control-group
               = af.label :_destroy, 'Remove:', class: 'control-label answers_attributes'
               .controls

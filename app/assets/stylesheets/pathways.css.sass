@@ -1,6 +1,6 @@
+@import "variables"
 .template
   display: none
-
 .sortable-question
   border: 1px solid black
   &:hover
@@ -8,3 +8,22 @@
 
 .highlight
   background-color: palegreen
+
+.question
+  background-color: $gray
+  padding: 10px
+  margin: 20px 10px
+  border-radius: 5px
+  select,
+  textarea,
+  input[type="text"]
+    width: 90%
+.answer
+  background-color: $grayLight
+  padding: 10px
+  margin: 10px 20px
+  border-radius: 5px
+  select,
+  textarea,
+  input[type="text"]
+    width: 90%

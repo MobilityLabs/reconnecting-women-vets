@@ -1,14 +1,17 @@
+/ TODO: Seems to be cruft.  Delete if possible.
 = form_for(@resource, remote: true) do |f|
   %table(border=true)
     %thead
       %tr
         %th Name
+        %th Description
         %th Link
         %th Starting Weight
         %th Actions
     %tbody
       %tr
         %td= f.text_field :name, class: "resource_attribute"
+        %td= f.text_field :description, class: "resource_attribute"
         %td= f.text_field :link, class: "resource_attribute"
         %td= f.number_field :starting_weight, class: "resource_attribute"
         - if @category.present?

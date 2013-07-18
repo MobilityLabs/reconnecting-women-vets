@@ -98,7 +98,7 @@ private
 
   def resource_params
     params[:resource] ||= {}
-    permitted = params[:resource].permit(:name, :link, :starting_weight, :category_id)
+    permitted = params[:resource].permit(:name, :description, :link, :starting_weight, :category_id)
     permitted
   end
 

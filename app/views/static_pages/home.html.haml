@@ -1,7 +1,18 @@
 .row-fluid
   .span12
-    %h1 Welcome to Reconnecting
-.row-fluid
-  .span12
-    %p If you are a woman who has served in the military, you are entitled to help and support as you face the world and look for meaningful employment.
-    %p We are here to help connect you to those resources most relevant to your needs.
+    .row-fluid
+      .span12.home-image
+        %p Find Resources And Support.
+        %p Get Reconnected.
+        %div
+          = link_to 'Get Started', '/ux/questions/2',{class: 'btn btn-inverse btn-get-started'}
+    .row-fluid
+      .span6.white
+        %h2 Welcome
+        %p If you are a woman who has served in the military, you are entitled to help and support as you face the world and look for meaningful employment.
+        %p We are here to help connect you to those resources most relevant to your needs.
+        %p Click to get started.
+      .span6.white
+        %h2 Subscribe for Updates
+        %p We are proud of the work we are doing. if you would like to hear about milestones that we hit. Please provide your email address below.
+        = render partial: "layouts/mailchimp_embed_form"

@@ -14,6 +14,12 @@
 
   .field
     .control-group
+      = f.label :end_of_path, class: 'control-label'
+      .controls
+        = f.check_box :end_of_path, class: 'answer_attribute'
+
+  #goto_pathway{class: "field#{' hidden' if @answer.end_of_path}"}
+    .control-group
       = f.label :pathway_id, 'Goto pathway', class: 'control-label'
       .controls
         = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(return to previous)'}

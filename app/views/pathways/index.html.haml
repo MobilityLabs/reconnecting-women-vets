@@ -1,5 +1,5 @@
 .row-fluid
-  .span12
+  .span12.white
     %table(border=true)
       %thead
         %tr
@@ -32,12 +32,17 @@
                       - new_question = false
                     %td= link_to answer.text, answer
                     %td
-                      - if answer.goto_pathway.present?
+                      - if answer.end_of_path
+                        %button.btn.btn-mini.btn-danger.disabled end of path
+                      - elsif answer.goto_pathway.present?
                         = answer.goto_pathway.name
                       - else
                         (return to previous)
                     %td{class: "question_#{answer.next_question.id if answer.next_question.present?}"}
-                      = link_to 'Next', "#{ux_question_path(answer.next_question)}?p=#{answer.id}", target: '_blank' if answer.next_question.present?
+                      - if answer.end_of_path
+                        = link_to 'Final', "#{ux_final_path}?p=#{answer.id}", target: '_blank'
+                      - else
+                        = link_to 'Next', "#{ux_question_path(answer.next_question)}?p=#{answer.id}", target: '_blank' if answer.next_question.present?
               - else
                 %tr{class: "pathway_#{pathway.id}"}
                   - if new_pathway
@@ -64,5 +69,5 @@
 %br
 
 .row-fluid
-  .span12
+  .span12.white
     = link_to 'New', new_pathway_path, class: 'btn btn-mini'
