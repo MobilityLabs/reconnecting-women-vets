@@ -5,6 +5,7 @@ Reconnecting::Application.routes.draw do
   match "demonstration", to: 'static_pages#demonstration', via: :get
   match "contact-us", to: 'static_pages#contact_us', via: :get
   match "strategy", to: 'static_pages#strategy', via: :get
+  match "how-it-works", to: 'static_pages#how', via: :get
 
 
   resources :admins, only: [:index, :show, :destroy]

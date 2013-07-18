@@ -12,4 +12,8 @@ class StaticPagesController < ApplicationController
 
   def strategy
   end
+
+  def how
+
+  end
 end
