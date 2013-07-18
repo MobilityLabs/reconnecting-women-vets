@@ -31,6 +31,7 @@ Reconnecting::Application.routes.draw do
   resources :questions
   namespace :ux do
     resources :questions, only: :show
+    get 'final', to: 'questions#final'
   end
 
   resources :answers
