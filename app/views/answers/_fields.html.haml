@@ -5,31 +5,29 @@
       .well
 
         - if f.object.present? && f.object.new_record?
-          .row-fluid
-            .span12
-              %h4 Add a new Answer
+          %h4 Add a new Answer
 
-        .row-fluid
-          .span12
-            .field
-              .control-group
-                = f.label :text, class: 'control-label'
-                .controls
-                  = f.text_area :text, rows: 2, class: 'answer_attribute'
+        .field
+          .control-group
+            = f.label :text, class: 'control-label'
+            .controls
+              = f.text_area :text, rows: 2, class: 'answer_attribute'
 
-        .row-fluid
-          .span12
-            .field
-              .control-group
-                = f.label :pathway_id, 'Goto pathway', class: 'control-label'
-                .controls
-                  = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(return to previous)'}
+        .field
+          .control-group
+            = f.label :end_of_path, class: 'control-label'
+            .controls
+              = f.check_box :end_of_path
+
+        .field
+          .control-group
+            = f.label :pathway_id, 'Goto pathway', class: 'control-label'
+            .controls
+              = f.select :pathway_id, @pathways.collect {|p| [p.name, p.id]}, {include_blank: '(return to previous)'}
 
         - unless f.object.nil? || f.object.new_record?
-          .row-fluid
-            .span12
-              .field
-                .control-group
-                  = f.label :_destroy, 'Remove:', class: 'control-label'
-                  .controls
-                    = f.check_box :_destroy
+          .field
+            .control-group
+              = f.label :_destroy, 'Remove:', class: 'control-label'
+              .controls
+                = f.check_box :_destroy

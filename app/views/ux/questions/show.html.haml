@@ -4,16 +4,14 @@
     - @question.answers.each do |answer|
       - path_taken = (@path_taken + [answer.id.to_s]).join(',')
       - if answer.end_of_path
-        = link_to_url "#{ux_final_path}?p=#{path_taken}"
+        = link_to answer.text, "#{ux_final_path}?p=#{path_taken}", class: 'btn btn-answer'
       - else
         - next_question = answer.next_question(@path_taken)
         - if next_question.present?
           - url = "#{ux_question_path(next_question)}?p=#{path_taken}"
-          = link_to url, class: 'btn btn-answer' do
-            = answer.text
-        - else
-          - if admin_signed_in?
-            = link_to answer.text, edit_answer_path(answer), class: "btn btn-answer path-error"
+          = link_to answer.text, url, class: 'btn btn-answer'
+        - elsif admin_signed_in?
+          = link_to answer.text, edit_answer_path(answer), class: 'btn btn-answer path-error'
 
   .span4
     .row-fluid

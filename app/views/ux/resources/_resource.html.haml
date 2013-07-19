@@ -1,2 +1,5 @@
-%li.user-resource{id: "resource_#{resource.id}"}
+%li.resource{id: "resource_#{resource.id}"}
   = link_to resource.name, resource.link
+  - if resource.description.present?
+    %p.resource-description.blue
+      %i= resource.description

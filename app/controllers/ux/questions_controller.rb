@@ -3,7 +3,7 @@ class Ux::QuestionsController < ApplicationController
 
   def show
     @question = Question.includes(:answers, :pathway).find(params[:id])
-    @path_taken = (request.query_parameters[:p] || '').split ','
+    @path_taken = path_taken
 
     begin
       @reassurance = Answer.find(@path_taken.last).reassurance if @path_taken.last.present?
@@ -13,15 +13,17 @@ class Ux::QuestionsController < ApplicationController
     end
 
     @resources = Resource.find_for @path_taken
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   def final
-    @path_taken = (request.query_parameters[:p] || '').split ','
+    @path_taken = path_taken
     @resources = Resource.find_for @path_taken
+  end
+
+private
+
+  def path_taken
+    @p ||= (request.query_parameters[:p] || '').split ','
   end
 
 end

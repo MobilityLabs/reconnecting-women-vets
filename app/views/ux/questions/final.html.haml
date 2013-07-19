@@ -3,9 +3,9 @@
     - if @resources.count > 0
       %h2 Here are the resources we've found for you
       .row-fluid
-        .span12.white
+        .span12
           %h2 Resources
-          %ul#resources
+          %ul#resources.final
             = render @resources.slice(0,5)
     - else
       %h1 The system is currently undergoing maintenance.  Please try again later.

@@ -1,7 +1,14 @@
 %tr.answer{id: "answer_#{answer.id}"}
   %td.sortby= link_to answer.text, answer
   %td
-    - if answer.goto_pathway.present?
+    - if answer.end_of_path
+      %i.icon-check
+    - else
+      %i.icon-check-empty
+  %td
+    - if answer.end_of_path
+      (n/a)
+    - elsif answer.goto_pathway.present?
       = link_to answer.goto_pathway.name, answer.goto_pathway
     - else
       (return to previous)
