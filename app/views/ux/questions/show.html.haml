@@ -2,31 +2,25 @@
   .span8.white
     %h2= @question.text
     - @question.answers.each do |answer|
-      - next_question = answer.next_question(@path_taken)
-      - if next_question.present?
-        - url = "#{ux_question_path(next_question)}?p=#{@path_taken.join(',')},#{answer.id.to_s}"
-        = link_to url, class: 'btn btn-answer' do
-          = answer.text
+      - path_taken = (@path_taken + [answer.id.to_s]).join(',')
+      - if answer.end_of_path
+        = link_to answer.text, "#{ux_final_path}?p=#{path_taken}", class: 'btn btn-answer'
       - else
-        - if admin_signed_in?
-          = link_to answer.text, edit_answer_path(answer), class: "btn btn-answer path-error"
+        - next_question = answer.next_question(@path_taken)
+        - if next_question.present?
+          - url = "#{ux_question_path(next_question)}?p=#{path_taken}"
+          = link_to answer.text, url, class: 'btn btn-answer'
+        - elsif admin_signed_in?
+          = link_to answer.text, edit_answer_path(answer), class: 'btn btn-answer path-error'
 
   .span4
-    - if @resources.count > 0
-      .row-fluid
-        .span12.white
-          %h2 Resources
+    .row-fluid
+      .span12.white
+        %h2 Resources
+        - if @resources.count > 0
           %ul#resources
             = render @resources
-      - if @reassurance.present?
-        .row-fluid
-          .span12.blue
-            %p= @reassurance
-    - else
+    - if @reassurance.present?
       .row-fluid
-        .span12.white
-          %h2 Resources
-      - if @reassurance.present?
-        .row-fluid
-          .span12.blue    
-            %p= @reassurance
+        .span12.blue
+          %p= @reassurance

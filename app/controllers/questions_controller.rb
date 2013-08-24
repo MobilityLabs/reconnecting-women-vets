@@ -104,8 +104,9 @@ private
     params[:question].permit(:text,
                              :order,
                              :pathway_id,
-                             answers_attributes: [:text,
-                                                  :id,
+                             answers_attributes: [:id,
+                                                  :text,
+                                                  :end_of_path,
                                                   :pathway_id,
                                                   :_destroy])
   end
