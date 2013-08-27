@@ -32,6 +32,7 @@ Reconnecting::Application.routes.draw do
   namespace :ux do
     resources :questions, only: :show
     get 'final', to: 'questions#final'
+    get 'remotebutton', to: 'questions#remote_button'
   end
 
   resources :answers

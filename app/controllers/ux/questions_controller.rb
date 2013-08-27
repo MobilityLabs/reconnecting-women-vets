@@ -20,6 +20,10 @@ class Ux::QuestionsController < ApplicationController
     @resources = Resource.find_for @path_taken
   end
 
+  def remote_button
+    render 'ux/remote/button', layout:false
+  end
+
 private
 
   def path_taken
